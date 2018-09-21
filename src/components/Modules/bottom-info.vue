@@ -11,7 +11,7 @@
 
 
 <script>
-import bottomInfoData from "../../data/bottomInfo";
+// import bottomInfoData from "../../data/bottomInfo";
 export default {
     data() {
         return {
@@ -21,8 +21,8 @@ export default {
   components:{
   },
   created() {
-      this.infoData = bottomInfoData.bottomInfoDate;
-      console.log(bottomInfoData)
+    //   this.infoData = bottomInfoData.bottomInfoDate;
+    //   console.log(bottomInfoData)
   }
 }
 </script>

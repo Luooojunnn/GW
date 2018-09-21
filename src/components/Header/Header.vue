@@ -23,7 +23,6 @@
   </div>  
 </template>
 <script>
-import navInfo from "../../data/nav";
 export default {
   data() {
     return {
@@ -35,7 +34,7 @@ export default {
   created() {
     console.log(this.http.get);
     this.http
-      .get("http://chstpa.bdpku.com/navInfo")
+      .get("http://localhost:9000/navInfoApi")
       .then(res => {
         // console.log(res.data)
         if (+res.status === 200) {

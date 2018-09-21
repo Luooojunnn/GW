@@ -1,0 +1,6 @@
+{
+    "navInfoApi": {
+        "dev": "./mock-data/navInfo.json",
+        "online": "http://chstpa.bdpku.com/navInfo"
+    }
+}
