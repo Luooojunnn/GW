@@ -1,30 +1,9 @@
-# gw
+### 官网
 
-> A Vue.js project
+运行步骤：
 
-## Build Setup
+	1. git clone git@github.com:Luooojunnn/GW.git
+	2. npm install
 
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+	***查看是否安装了node，在控制台输出'node'看是否进入node运行时***
+	3. 进入项目目录，npm run satrt 启动服务，在localhost:8080查看
