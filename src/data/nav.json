@@ -1,0 +1,23 @@
+{
+    "navInfo": [
+        {
+            "level1Name": "首页",
+            "child": [],
+            "opened": 1
+        },
+        {
+            "level1Name": "行业咨询",
+            "child": [
+                {
+                    "level2Name": "医院咨询",
+                    "opened": 0
+                },
+                {
+                    "level2Name": "医生咨询",
+                    "opened": 1
+                }
+            ],
+            "opened": 0
+        }
+    ]
+}
