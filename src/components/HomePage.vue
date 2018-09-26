@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="all-content-wrap">
      <Header @loginToast="loginToast"></Header>
       <router-view class="view-model"></router-view>
       <Login-dialog :showStatus='showStatus'></Login-dialog>
@@ -28,9 +28,19 @@ export default {
   }
 }
 </script>
+<style>
+  /* .el-button>span {
+    font-size: 14px;
+  } */
+</style>
+
 <style lang="scss" scoped type="text/css">
-.view-model {
-  padding: 10px;
-  background-color: #f6f6f6;
+.all-content-wrap {
+  padding: 0 80px;
+  font-size: 14px;
+  .view-model {
+    padding: 10px;
+    background-color: #f6f6f6;
+  }
 }
 </style>

@@ -8,12 +8,14 @@
             <oper></oper>
         </div>
         <div class="wrap-news">
-            <!-- <tabNews class="tab-news"></tabNews>
-            <tabNews class="tab-news"></tabNews> -->
+            <div class="wrap-news-col">
+              <infoArea></infoArea>
             <infoArea></infoArea>
+            </div>
+            <div class="wrap-news-col">
+              <infoArea></infoArea>
             <infoArea></infoArea>
-            <infoArea></infoArea>
-            <infoArea></infoArea>
+            </div>
         </div>
         <div>
             <carouselAbout></carouselAbout>
@@ -63,12 +65,10 @@ export default {
 }
 .wrap-news {
   padding: 0 5%;
-  // display: flex;
-  // justify-content: space-around;
-  .info-area:nth-child(2n) {
-    // background: red;
-    margin-left: 30px;
-    margin-bottom: 20px;
+  .wrap-news-col {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
   }
 }
 .wrap-bottom {

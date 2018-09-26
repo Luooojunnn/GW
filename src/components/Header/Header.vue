@@ -4,8 +4,8 @@
         <img class="logo" src="../../assets/logo.jpg" alt="LOGO">
         <div class="oper">
             <!-- <el-input v-model="input" placeholder="请输入内容" prefix-icon="el-icon-search"></el-input> -->
-            <el-button class="search-btn" type="primary" @click="loginFc(0)">注册</el-button>
-            <el-button class="search-btn" @click="loginFc(1)">登录</el-button>
+            <el-button class="search-btn" size='small' type="primary" @click="loginFc(0)">注册</el-button>
+            <el-button class="search-btn" size='small' @click="loginFc(1)">登录</el-button>
         </div>
     </div>
     <div class="nav">
@@ -82,7 +82,7 @@ export default {
       height: 90px;
     }
     .oper {
-      width: 390px;
+      width: 273px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -119,7 +119,7 @@ export default {
               background-color: #ccc;
               border-bottom: solid 1px #fff;
               color: #fff;
-              padding: 0 16px;
+              padding: 0 6px;
             }
           }
         }
