@@ -7,7 +7,7 @@
       </el-form-item>
       <el-form-item label="图形验证码" class="yzm-width">
         <el-input size='small' v-model="form.imgPsd"></el-input>
-        <img class="yzm-img" src="../../assets/join.png" alt="yzm">
+        <img class="yzm-img" :src="yzmImg" alt="yzm" @click="updataYZM">
       </el-form-item>
       <el-form-item label="短信验证码" class="yzm-width">
         <el-input size='small' v-model="form.dxPsd"></el-input>
@@ -33,13 +33,18 @@ export default {
         imgPsd: "",
         dxPsd: "",
         newPsd: ""
-      }
+      },
+      yzmImg: "http://chstpa.bdpku.com/verify/getVerifyCode"
     };
   },
   components: {},
   methods: {
     goback() {
       this.$router.go(-1);
+    },
+    updataYZM() {
+      this.yzmImg =
+        "http://chstpa.bdpku.com/verify/getVerifyCode?rnd=" + Math.random();
     }
   }
 };
@@ -55,11 +60,16 @@ export default {
   height: 32px;
   margin-top: 4px;
   float: right;
+  cursor: pointer;
 }
 .yzm-table {
   .el-form-item {
     margin-bottom: 10px;
   }
+}
+.btn-fsyzm {
+  float: right;
+  margin-top: 4px;
 }
 </style>
 

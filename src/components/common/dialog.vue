@@ -18,7 +18,7 @@
                 </el-form-item>
                 <el-form-item label="验证码" :label-width="formLabelWidth">
                     <el-input size='small' class="yzm" v-model="form.yzm" autocomplete="off"></el-input>
-                    <img v-if="showStatus['whitchOper']" class="yzm-img" src="../../assets/join.png" alt="yzm">
+                    <img v-if="showStatus['whitchOper']" class="yzm-img" :src="yzmImg" alt="yzm" @click="updataYZM">
                 </el-form-item>
                 <!--只是为了更换在在注册、登录时显示的位置的不同-->
                 <el-form-item v-if="!showStatus['whitchOper']" label="密码" :label-width="formLabelWidth">
@@ -30,7 +30,7 @@
             </div>
             <div slot="footer" class="dialog-footer">
                 <el-button size='small' @click="dialogShow = false">取 消</el-button>
-                <el-button size='small' type="primary" @click="dialogShow = false">确 定</el-button>
+                <el-button size='small' type="primary" @click="enterFc">确 定</el-button>
             </div>
         </el-dialog>
     </div>
@@ -47,7 +47,8 @@ export default {
         yzm: "",
         phone: ""
       },
-      formLabelWidth: "100px"
+      formLabelWidth: "100px",
+      yzmImg: "http://chstpa.bdpku.com/verify/getVerifyCode"
     };
   },
   watch: {
@@ -60,6 +61,24 @@ export default {
       console.log(this.$router);
       this.dialogShow = false;
       this.$router.push("YzmForm");
+    },
+    updataYZM() {
+      this.yzmImg = "http://chstpa.bdpku.com/verify/getVerifyCode?rnd=" + Math.random()
+    },
+    enterFc() {
+      console.log(this.showStatus.whitchOper)
+      // 0 注册， 1 登录
+      let url = this.showStatus.whitchOper ? 'http://localhost:9000/loginApi' : '注册url'
+      let params = this.showStatus.whitchOper ? {"username": "admin", "password": "123456", "yzm": "1234"} : {}
+      params = JSON.stringify(params)
+      this.http
+      .post(url, params)
+      .then(res => {
+        console.log(res)
+      })
+      .catch(e => {
+        console.log(e)
+      })
     }
   }
 };
@@ -86,11 +105,9 @@ export default {
         height: 32px;
         margin-top: 4px;
         float: right;
+        cursor: pointer;
       }
-      .btn-fsyzm {
-        float: right;
-        margin-top: 4px;
-      }
+      
     }
   }
 }

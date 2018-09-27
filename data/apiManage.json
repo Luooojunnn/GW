@@ -1,6 +1,10 @@
 {
     "navInfoApi": {
         "dev": "./mock-data/navInfo.json",
-        "online": "http://chstpa.bdpku.com/navInfo"
+        "online": "http://chstpa.bdpku.com/navInfo/navList"
+    },
+    "loginApi": {
+        "dev": "./mock-data/login.json",
+        "online": "http://chstpa.bdpku.com/login"
     }
 }

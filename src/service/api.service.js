@@ -20,11 +20,15 @@ http.createServer((req, res) => {
     if (url.parse(req.url).pathname !== '/favicon.ico') {
       // 判断请求方式，请求参数
       let reqMethod = req.method === 'GET' ? 'GET' : 'POST'
-      if (url.parse(req.url, true).query) {
+      if (reqMethod === 'GET') {
         console.log(`接口名 ${url.parse(req.url, true).pathname}，采用 ${reqMethod} 请求方式，传递的参数是 ${JSON.stringify(url.parse(req.url, true).query)}`)
       } else {
+        let res = ''
         req.on('data', (reqData) => {
-          console.log(`接口名 ${url.parse(req.url, true).pathname}，采用 ${reqMethod} 请求方式，传递的参数是 ${reqData.toString('utf8')}`)
+          res += reqData
+        })
+        req.on('end', (reqData) => {
+          console.log(`接口名 ${url.parse(req.url, true).pathname}，采用 ${reqMethod} 请求方式，传递的参数是 ${res.toString('utf8')}`)
         })
       }
       // 寻址回值
@@ -56,10 +60,8 @@ http.createServer((req, res) => {
             method: reqMethod,
             headers: req.headers
           }, (data) => {
-            console.log(data)
             res.end(data)
           })
-          // res.end(data)
         }
       } else {
         res.writeHead(404)
@@ -84,7 +86,10 @@ http.createServer((req, res) => {
 */
 function HCLIENTFC ({ hostname, path = '/', method = 'GET', headers }, callback = () => { }) {
   let resData = ''
-  console.log(hostname, path, method, headers)
+  console.log('接口的信息参数：', hostname, path, method, headers)
+  /**
+   * 由于发送了header，其accept接受的数据类型可能和返回的数据类型不一致，所以可能导致接口超时，必要时，可去掉发送header
+  */
   const HCLIENT = http.request({
     hostname,
     path,
@@ -96,7 +101,7 @@ function HCLIENTFC ({ hostname, path = '/', method = 'GET', headers }, callback 
       resData += chunk
     })
     res.on('end', () => {
-      console.log('222', resData.toString())
+      console.log('接口返回结果是：', resData.toString())
       callback(resData)
       return resData.toString()
     })

@@ -7,8 +7,11 @@
             <el-button class="search-btn" size='small' type="primary" @click="loginFc(0)">注册</el-button>
             <el-button class="search-btn" size='small' @click="loginFc(1)">登录</el-button>
         </div>
+        <div class="person-info" style="display: none">
+          <p>梁朝伟 ▼</p>
+        </div>
     </div>
-    <div class="nav">
+    <div class="nav" v-if="this.$route.path === '/index'">
         <nav class="nav-parent">
             <ul class="nav-child">
                 <li v-for="(item, key) in navInfo" @mouseover="showChild(true, key)" @mouseout="showChild(false)">
@@ -32,48 +35,43 @@ export default {
     };
   },
   created() {
-    console.log(this.http.get);
-    this.http
-      .get("http://localhost:9000/navInfoApi")
-      .then(res => {
-        // console.log(res.data)
-        if (+res.status === 200) {
-          this.navInfo = res.data.navInfo;
-          this.showStatus.length = this.navInfo.length;
-          this.showStatus.fill(0);
-          console.log(this.navInfo);
-        }
-      })
-      .catch(e => {
-        console.log(e);
-      });
-    // this.navInfo = navInfo;
-    // this.showStatus.length = this.navInfo.navInfo.length;
-    // this.showStatus.fill(0);
-    // console.log(this.showStatus);
+    console.log(this.$route);
+    this.getData("http://localhost:9000/navInfoApi");
   },
   methods: {
     showChild(v, k = -1) {
       if (k > -1) {
         // 数组不能脏检查，需要用变异方法
         this.showStatus.splice(k, 1, 1);
-        // console.log(this.showStatus);
       } else {
         this.showStatus = new Array(this.showStatus.length).fill(0);
-        // this.showStatus.splice(0, this.showStatus.length, 0);
       }
     },
     loginFc(v) {
-      console.log(v)
       this.$emit("loginToast", v);
+    },
+    getData(url) {
+      this.http
+      .get(url)
+      .then(res => {
+        if (+res.status === 200) {
+          this.navInfo = res.data.navInfo;
+          this.showStatus.length = this.navInfo.length;
+          this.showStatus.fill(0);
+        }
+      })
+      .catch(e => {
+        console.log(e);
+      });
     }
   }
 };
 </script>
 <style lang="scss" scoped type="text/css">
 #header {
-  padding: 20px 10px 0;
+  padding: 20px 10px 10px;
   background-color: #f6f6f6;
+  border-bottom: solid 1px rgba(166, 166, 166, 0.3);
   .title {
     display: flex;
     justify-content: space-between;
@@ -89,6 +87,9 @@ export default {
       .search-btn {
         margin-left: 10px;
       }
+    }
+    .person-info {
+      padding: 0 20px 0 0;
     }
   }
   .nav {
