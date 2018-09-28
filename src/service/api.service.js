@@ -34,8 +34,9 @@ http.createServer((req, res) => {
       // 寻址回值
       if (apiFile[url.parse(req.url, true).pathname.substring(1)]) {
         res.writeHead(200, {
-          'Content-Type': 'text/html',
-          'Access-Control-Allow-Origin': '*'
+          'Access-Control-Allow-Origin': '*',
+          'Allow': 'POST, GET, OPTIONS, PUT',
+          'Access-Control-Allow-Headers': '*'
         })
         // 根据环境变量选择接口
         let apiAdress = apiFile[url.parse(req.url, true).pathname.substring(1)][ENV]

@@ -70,7 +70,6 @@ export default {
       // 0 注册， 1 登录
       let url = this.showStatus.whitchOper ? 'http://localhost:9000/loginApi' : '注册url'
       let params = this.showStatus.whitchOper ? {"username": "admin", "password": "123456", "yzm": "1234"} : {}
-      params = JSON.stringify(params)
       this.http
       .post(url, params)
       .then(res => {
