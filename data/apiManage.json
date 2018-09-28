@@ -18,5 +18,9 @@
     "exitLoginApi": {
         "dev": "./mock-data/exitLogin.json",
         "online": "" 
+    },
+    "newsApi": {
+        "dev": "./mock-data/news.json",
+        "online": "" 
     }
 }

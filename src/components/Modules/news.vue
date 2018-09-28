@@ -12,6 +12,21 @@ import tabNews from './tab-news';
 export default {
   components:{
       tabNews
+  },
+  created() {
+      this.getDate()
+  },
+  methods: {
+      getDate() {
+          this.http
+          .get('http://localhost:9000/newsApi')
+          .then(res => {
+            console.log(res)
+          })
+          .catch(e => {
+              console.log(e)
+          })
+      }
   }
 }
 </script>

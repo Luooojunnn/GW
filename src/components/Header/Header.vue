@@ -55,7 +55,6 @@ export default {
       this.http
         .get(url)
         .then(res => {
-          console.log(res);
           if (+res.err.code === 200) {
             this.navInfo = res.data.navInfo;
             this.showStatus.length = this.navInfo.length;
