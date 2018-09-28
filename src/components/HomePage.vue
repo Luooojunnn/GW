@@ -1,17 +1,18 @@
 <template>
   <div class="all-content-wrap">
-     <Header @loginToast="loginToast"></Header>
+     <Header @loginToast="loginToast" :name="name"></Header>
       <router-view class="view-model"></router-view>
-      <Login-dialog :showStatus='showStatus'></Login-dialog>
+      <Login-dialog :showStatus='showStatus' @loginOK="loginOK"></Login-dialog>
   </div>  
 </template>
 <script>
 import Header from './Header/Header.vue'
-import LoginDialog from './common/dialog.vue'
+import LoginDialog from './Login/dialog.vue'
 export default {
   data() {
     return {
-      showStatus: {}
+      showStatus: {},
+      name: ''
     }
   },
   methods: {
@@ -20,6 +21,9 @@ export default {
         show: true,
         whitchOper: v
       })
+    },
+    loginOK(v) {
+      this.name = v
     }
   },
   components:{

@@ -68,12 +68,29 @@ export default {
     enterFc() {
       console.log(this.showStatus.whitchOper)
       // 0 注册， 1 登录
-      let url = this.showStatus.whitchOper ? 'http://localhost:9000/loginApi' : '注册url'
-      let params = this.showStatus.whitchOper ? {"username": "admin", "password": "123456", "yzm": "1234"} : {}
+      let url = this.showStatus.whitchOper ? 'http://localhost:9000/loginApi' : 'http://localhost:9000/registeredApi'
+      let params = this.showStatus.whitchOper
+                   ? {"username": "admin", "password": "123456", "yzm": "1234"}
+                   : {
+                     username: this.form.id,
+                     phone: this.form.phone,
+                     phoenyzm: this.form.yzm,
+                     password: this.form.psw
+                   }
       this.http
       .post(url, params)
       .then(res => {
         console.log(res)
+        if (+res.err.code === 200) {
+          localStorage.setItem('USERNAME', res.data.username)
+          localStorage.setItem('TOKEN', res.data.token)
+          localStorage.setItem('TIMEFIIL', res.data.time)
+          // 改变头信息
+          this.$emit('loginOK', res.data.username)
+          this.dialogShow = false
+        } else {
+          this.$message.error(res.err.desc);
+        }
       })
       .catch(e => {
         console.log(e)
@@ -106,7 +123,10 @@ export default {
         float: right;
         cursor: pointer;
       }
-      
+      .btn-fsyzm {
+        float: right;
+        margin-top: 4px;
+      } 
     }
   }
 }

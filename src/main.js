@@ -11,10 +11,17 @@ Vue.use(ElementUI)
 Vue.config.productionTip = false
 
 const apiClient = axios.create()
-
+// 增加请求拦截
 apiClient.interceptors.request.use(config => {
-  config.headers['Content-Type'] = 'application/json; charset=UTF-8'
+  config.headers['Authorization'] = localStorage.getItem('TOKEN') ? localStorage.getItem('TOKEN') : ''
   return config
+}, function (error) {
+  // Do something with request error
+  return Promise.reject(error)
+})
+// 增加响应拦截
+apiClient.interceptors.response.use(res => {
+  return Promise.resolve(res.data)
 }, function (error) {
   // Do something with request error
   return Promise.reject(error)

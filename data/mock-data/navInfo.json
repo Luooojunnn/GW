@@ -1,27 +1,36 @@
 {
-    "navInfo": [
-        {
-            "level1Name": "首页",
-            "child": [],
-            "opened": 1,
-            "operId": 1
-        },
-        {
-            "level1Name": "行业咨询",
-            "operId": 2,
-            "child": [
-                {
-                    "level2Name": "医院咨询",
-                    "opened": 0,
-                    "operId": 2.1
-                },
-                {
-                    "level2Name": "医生咨询",
-                    "opened": 1,
-                    "operId": 2.2
-                }
-            ],
-            "opened": 0
-        }
-    ]
+    "err": {
+        "code": 200,
+        "msg": "OK",
+        "desc": "请求成功"
+    },
+
+    "data": {
+        "navInfo": [
+            {
+                "level1Name": "首页",
+                "child": [],
+                "opened": 1,
+                "operId": 1
+            },
+            {
+                "level1Name": "行业咨询",
+                "operId": 2,
+                "child": [
+                    {
+                        "level2Name": "医院咨询",
+                        "opened": 0,
+                        "operId": 2.1
+                    },
+                    {
+                        "level2Name": "医生咨询",
+                        "opened": 1,
+                        "operId": 2.2
+                    }
+                ],
+                "opened": 0
+            }
+        ]
+    }
+    
 }

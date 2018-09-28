@@ -2,13 +2,12 @@
   <div id='header'>
     <div class="title">
         <img class="logo" src="../../assets/logo.jpg" alt="LOGO">
-        <div class="oper">
-            <!-- <el-input v-model="input" placeholder="请输入内容" prefix-icon="el-icon-search"></el-input> -->
+        <div class="oper"  v-if="!username">
             <el-button class="search-btn" size='small' type="primary" @click="loginFc(0)">注册</el-button>
             <el-button class="search-btn" size='small' @click="loginFc(1)">登录</el-button>
         </div>
-        <div class="person-info" style="display: none">
-          <p>梁朝伟 ▼</p>
+        <div class="person-info" v-if="username">
+          <p>{{username}} <span class="exit-btn" @click="exitFc">[退出]</span></p>
         </div>
     </div>
     <div class="nav" v-if="this.$route.path === '/index'">
@@ -27,16 +26,18 @@
 </template>
 <script>
 export default {
+  props: ['name'],
   data() {
     return {
+      username: '',
       input: "",
       navInfo: [],
       showStatus: []
     };
   },
   created() {
-    console.log(this.$route);
-    this.getData("http://localhost:9000/navInfoApi");
+    this.getData("http://localhost:9000/navInfoApi")
+    this.judge()
   },
   methods: {
     showChild(v, k = -1) {
@@ -54,7 +55,8 @@ export default {
       this.http
       .get(url)
       .then(res => {
-        if (+res.status === 200) {
+        console.log(res)
+        if (+res.err.code === 200) {
           this.navInfo = res.data.navInfo;
           this.showStatus.length = this.navInfo.length;
           this.showStatus.fill(0);
@@ -63,8 +65,32 @@ export default {
       .catch(e => {
         console.log(e);
       });
+    },
+    /**
+     * 判断localstorage有没有token且过期没，有效的话，直接显示登录态
+     * ps 本来想直接操作 this.name 但是报警告了，不要直接操作props
+    */
+    judge() {
+      let logined = localStorage.getItem('TOKEN') && new Date().getTime() < localStorage.getItem('TIMEFIIL')
+      if (logined && !this.name) {
+        this.username = localStorage.getItem('USERNAME')
+      }
+    },
+    exitFc() {
+      let arr = ['TOKEN', 'USERNAME', 'TIMEFIIL']
+      Object.keys(localStorage).forEach(item => {
+        if (arr.includes(item)) {
+          localStorage.removeItem(item)
+        }
+      })
+      this.username = ''
     }
-  }
+  },
+  watch: {
+    name(username) {
+      this.username = username
+    }
+  },
 };
 </script>
 <style lang="scss" scoped type="text/css">
@@ -90,6 +116,10 @@ export default {
     }
     .person-info {
       padding: 0 20px 0 0;
+      .exit-btn {
+        cursor: pointer;
+        color: red;
+      }
     }
   }
   .nav {

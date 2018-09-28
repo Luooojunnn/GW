@@ -6,5 +6,9 @@
     "loginApi": {
         "dev": "./mock-data/login.json",
         "online": "http://chstpa.bdpku.com/login"
+    },
+    "registeredApi": {
+        "dev": "./mock-data/registered.json",
+        "online": ""
     }
 }
