@@ -1,38 +1,78 @@
 <template>
   <div class="module-news">
-     <div>
-         <h3>2018世界公众科学素质促进大会</h3>
-         <p>大会于2018 年9 月17-19 日在中国北京国家会议中心举办, 包括会议、展览和专项活动等三大部分50 余项安排，同期将举办全球参与人数最多的科普活动——全国科普日。</p>
+     <div class="module-news-notice">
+         <h3>{{title}}</h3>
+         <p>{{summary}}</p>
+         <span class="module-news-detail">[详情]</span>
      </div>
-     <tab-news></tab-news>
+     <tab-news :tabNewsData='tabNewsData'></tab-news>
   </div>  
 </template>
 <script>
-import tabNews from './tab-news';
+import tabNews from "./tab-news";
 export default {
-  components:{
-      tabNews
+  data() {
+    return {
+      title: "",
+      summary: "",
+      number: "",
+      tabNewsData: {}
+    };
+  },
+  components: {
+    tabNews
   },
   created() {
-      this.getDate()
+    this.getDate();
   },
   methods: {
-      getDate() {
-          this.http
-          .get('http://localhost:9000/newsApi')
-          .then(res => {
-            console.log(res)
-          })
-          .catch(e => {
-              console.log(e)
-          })
-      }
+    getDate() {
+      this.http
+        .get("http://localhost:9000/newsApi")
+        .then(res => {
+          if (+res.err.code === 200) {
+            this.title = res.data.notice.title
+            this.summary = res.data.notice.summary
+            this.number = res.data.notice.number
+            this.tabNewsData = {
+                learningDynamic: res.data.learningDynamic,
+                announcement: res.data.announcement
+            }
+          } else {
+            this.$message.error(res.err.desc);
+          }
+        })
+        .catch(e => {
+          console.log(e);
+        });
+    }
   }
-}
+};
 </script>
 <style lang="scss" scoped>
-    .module-news {
-        border: solid 1px red;
-        margin-left: 80px;
+.module-news {
+  border: solid 1px red;
+  margin-left: 30px;
+  padding: 10px 12px;
+  .module-news-notice {
+    cursor: pointer;
+    &:hover {
+      h3 {
+        text-decoration: underline;
+      }
+      .module-news-detail {
+          color: #000;
+      }
     }
+    .module-news-detail {
+      width: 100%;
+      display: block;
+      text-align: right;
+      color: #2c3e50;
+    }
+    p {
+        margin-bottom: 0;
+    }
+  }
+}
 </style>
