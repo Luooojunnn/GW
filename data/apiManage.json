@@ -10,5 +10,13 @@
     "registeredApi": {
         "dev": "./mock-data/registered.json",
         "online": ""
+    },
+    "yzmApi": {
+        "dev": "./mock-data/yzm.json",
+        "online": "http://chstpa.bdpku.com/verify/getVerifyCode" 
+    },
+    "exitLoginApi": {
+        "dev": "./mock-data/exitLogin.json",
+        "online": "" 
     }
 }

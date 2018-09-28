@@ -26,18 +26,18 @@
 </template>
 <script>
 export default {
-  props: ['name'],
+  props: ["name"],
   data() {
     return {
-      username: '',
+      username: "",
       input: "",
       navInfo: [],
       showStatus: []
     };
   },
   created() {
-    this.getData("http://localhost:9000/navInfoApi")
-    this.judge()
+    this.getData("http://localhost:9000/navInfoApi");
+    this.judge();
   },
   methods: {
     showChild(v, k = -1) {
@@ -53,44 +53,57 @@ export default {
     },
     getData(url) {
       this.http
-      .get(url)
-      .then(res => {
-        console.log(res)
-        if (+res.err.code === 200) {
-          this.navInfo = res.data.navInfo;
-          this.showStatus.length = this.navInfo.length;
-          this.showStatus.fill(0);
-        }
-      })
-      .catch(e => {
-        console.log(e);
-      });
+        .get(url)
+        .then(res => {
+          console.log(res);
+          if (+res.err.code === 200) {
+            this.navInfo = res.data.navInfo;
+            this.showStatus.length = this.navInfo.length;
+            this.showStatus.fill(0);
+          }
+        })
+        .catch(e => {
+          console.log(e);
+        });
     },
     /**
      * 判断localstorage有没有token且过期没，有效的话，直接显示登录态
      * ps 本来想直接操作 this.name 但是报警告了，不要直接操作props
-    */
+     */
     judge() {
-      let logined = localStorage.getItem('TOKEN') && new Date().getTime() < localStorage.getItem('TIMEFIIL')
+      let logined =
+        localStorage.getItem("TOKEN") &&
+        new Date().getTime() < localStorage.getItem("TIMEFIIL");
       if (logined && !this.name) {
-        this.username = localStorage.getItem('USERNAME')
+        this.username = localStorage.getItem("USERNAME");
       }
     },
     exitFc() {
-      let arr = ['TOKEN', 'USERNAME', 'TIMEFIIL']
-      Object.keys(localStorage).forEach(item => {
-        if (arr.includes(item)) {
-          localStorage.removeItem(item)
-        }
-      })
-      this.username = ''
+      this.http
+        .post("http://localhost:9000/exitLoginApi", {
+          token: localStorage.getItem("TOKEN")
+        })
+        .then(res => {
+          if (+res.err.code === 200) {
+            let arr = ["TOKEN", "USERNAME", "TIMEFIIL"];
+            Object.keys(localStorage).forEach(item => {
+              if (arr.includes(item)) {
+                localStorage.removeItem(item);
+              }
+            });
+            this.username = ''
+          } else {
+            this.$message.error(res.err.desc);
+          }
+        })
+        .catch();
     }
   },
   watch: {
     name(username) {
-      this.username = username
+      this.username = username;
     }
-  },
+  }
 };
 </script>
 <style lang="scss" scoped type="text/css">

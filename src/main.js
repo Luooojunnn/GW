@@ -13,7 +13,9 @@ Vue.config.productionTip = false
 const apiClient = axios.create()
 // 增加请求拦截
 apiClient.interceptors.request.use(config => {
-  config.headers['Authorization'] = localStorage.getItem('TOKEN') ? localStorage.getItem('TOKEN') : ''
+  if (localStorage.getItem('TOKEN')) {
+    config.headers['Authorization'] = localStorage.getItem('TOKEN')
+  }
   return config
 }, function (error) {
   // Do something with request error

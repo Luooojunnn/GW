@@ -34,7 +34,7 @@ export default {
         dxPsd: "",
         newPsd: ""
       },
-      yzmImg: "http://chstpa.bdpku.com/verify/getVerifyCode"
+      yzmImg: ""
     };
   },
   components: {},
@@ -43,8 +43,7 @@ export default {
       this.$router.go(-1);
     },
     updataYZM() {
-      this.yzmImg =
-        "http://chstpa.bdpku.com/verify/getVerifyCode?rnd=" + Math.random();
+      
     }
   }
 };
