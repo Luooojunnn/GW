@@ -1,7 +1,7 @@
 <template>
   <div id='header' :style="{'border-bottom': (this.$route.path === '/index' || this.$route.path === '/YzmForm') ? 'inhert' : 'inhert'}">
     <div class="title">
-        <img class="logo" src="../../assets/logo.jpg" alt="LOGO" @click="goIndex">
+        <img class="logo" src="../../assets/logo.jpg" alt="LOGO" title="主页" @click="goIndex">
         <div class="oper"  v-if="!username">
             <el-button class="search-btn" size='small' type="primary" @click="loginFc(0)">注册</el-button>
             <el-button class="search-btn" size='small' @click="loginFc(1)">登录</el-button>

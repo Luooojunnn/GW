@@ -1,5 +1,6 @@
 <template>
   <div class="pages-wrap">
+      <el-button class="back" icon="el-icon-back" circle @click="goBack"></el-button>
       <h2 class="tit">{{article.title}}</h2>
       <div class="info">
         <span>发布日期：{{article.time}}</span>
@@ -40,6 +41,9 @@ export default {
       .catch(e => {
           console.log(e)
       })
+    },
+    goBack() {
+      this.$router.go(-1)
     }
   }
 }
@@ -60,8 +64,8 @@ export default {
         margin-left: 4em;
       }
     }
-    .main-article {
-
+    .back {
+      margin-bottom: 20px;
     }
   }
 </style>

@@ -2,18 +2,20 @@
   <div class="info-area">
      <h3>{{tit}}</h3>
      <ul class="tit-wrap">
-         <li v-for="item in pages">- {{item.title}} <span class="news-date">{{item.date}}</span></li>
+         <li v-for="item in pages" @click="clickPage(category, item.id)">- {{item.title}} <span class="news-date">{{item.date}}</span></li>
      </ul>
-     <div class="info-area-more">更多 ></div>
+     <div class="info-area-more" @click="clickPage(category)">更多 ></div>
   </div>  
 </template>
 <script>
+import mix from '../../mixins/clickPage'
 export default {
   props: ['title'],
   data() {
     return {
       tit: '',
-      pages: []
+      pages: [],
+      category: ''
     }
   },
   created() {
@@ -45,6 +47,7 @@ export default {
       .then(res => {
         if (+res.err.code === 200) {
           this.pages = res.data.pages
+          this.category = res.data.category
         }
         // console.log(res)
       })
@@ -52,7 +55,8 @@ export default {
         console.log(e)
       })
     }
-  }
+  },
+  mixins: [mix]
 }
 </script>
 <style lang="scss" scoped>

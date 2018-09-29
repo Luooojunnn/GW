@@ -5,6 +5,7 @@
         "desc": "请求成功"
     },
     "data": {
+        "category": 4,
         "pages": [
             {
                 "title": "会员发展情况通报",
