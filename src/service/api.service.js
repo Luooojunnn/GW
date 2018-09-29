@@ -95,7 +95,7 @@ http.createServer((req, res) => {
  * @param {string} obj.method - 请求方法
  * @param {Object} obj.headers - 请求头
 */
-function HCLIENTFC({ hostname, path = '/', method = 'GET', headers }, callback = () => { }) {
+function HCLIENTFC ({ hostname, path = '/', method = 'GET', headers }, callback = () => { }) {
   let resData = ''
   console.log('接口的信息参数：', hostname, path, method, headers)
   /**

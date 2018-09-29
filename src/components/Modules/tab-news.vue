@@ -3,12 +3,12 @@
      <el-tabs v-model="activeName" @tab-click="handleClick">
         <el-tab-pane label="学会动态" name="first">
           <ul class="new-wrap">
-            <li class="new-title" v-for="item in allData.learningDynamic.data">* {{item.title}} <span class="news-date">{{item.date}}</span></li>
+            <li class="new-title" v-for="item in allData.learningDynamic.data" @click="clickPage(category, item.id)">* {{item.title}} <span class="news-date">{{item.date}}</span></li>
           </ul>
         </el-tab-pane>
         <el-tab-pane label="公告通知" name="second">
           <ul class="new-wrap">
-            <li class="new-title" v-for="item in allData.announcement.data">* {{item.title}} <span class="news-date">{{item.date}}</span></li>
+            <li class="new-title" v-for="item in allData.announcement.data" @click="clickPage(category, item.id)">* {{item.title}} <span class="news-date">{{item.date}}</span></li>
           </ul>
         </el-tab-pane>
     </el-tabs>
