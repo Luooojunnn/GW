@@ -28,6 +28,9 @@ export default {
 </script>
 <style lang="scss" scoped>
     .bottom-info {
+         padding-top: 20px;
+        border: solid 1px red;
+        background-color: #f6f6f6;
         display: flex;
         height: 198px;
         .wrap-item {

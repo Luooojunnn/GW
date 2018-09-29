@@ -22,5 +22,29 @@
     "newsApi": {
         "dev": "./mock-data/news.json",
         "online": "" 
+    },
+    "meetingApi": {
+        "dev": "./mock-data/meeting.json",
+        "online": "" 
+    },
+    "memberApi": {
+        "dev": "./mock-data/member.json",
+        "online": "" 
+    },
+    "libraryApi": {
+        "dev": "./mock-data/library.json",
+        "online": "" 
+    },
+    "learningDataApi": {
+        "dev": "./mock-data/learningData.json",
+        "online": "" 
+    },
+    "allPagesApi": {
+        "dev": "./mock-data/allPages.json",
+        "online": "" 
+    },
+    "specificPagesApi": {
+        "dev": "./mock-data/specificPages.json",
+        "online": "" 
     }
 }

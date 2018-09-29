@@ -1,13 +1,15 @@
 <template>
   <div class="all-content-wrap">
-     <Header @loginToast="loginToast" :name="name"></Header>
-      <router-view class="view-model"></router-view>
-      <Login-dialog :showStatus='showStatus' @loginOK="loginOK"></Login-dialog>
+    <Header @loginToast="loginToast" :name="name"></Header>
+    <router-view class="view-model"></router-view>
+    <bottomInfo></bottomInfo>
+    <Login-dialog :showStatus='showStatus' @loginOK="loginOK"></Login-dialog>
   </div>  
 </template>
 <script>
 import Header from './Header/Header.vue'
 import LoginDialog from './Login/dialog.vue'
+import bottomInfo from "./Modules/bottom-info";
 export default {
   data() {
     return {
@@ -28,7 +30,8 @@ export default {
   },
   components:{
     Header,
-    LoginDialog
+    LoginDialog,
+    bottomInfo
   }
 }
 </script>

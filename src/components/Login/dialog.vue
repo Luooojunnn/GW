@@ -128,11 +128,11 @@ export default {
             .then(res => {
               console.log(res);
               if (+res.err.code === 200) {
-                localStorage.setItem("USERNAME", res.data.username);
+                localStorage.setItem("USERNAME", res.data.userName);
                 localStorage.setItem("TOKEN", res.data.token);
                 localStorage.setItem("TIMEFIIL", res.data.time);
                 // 改变头信息
-                this.$emit("loginOK", res.data.username);
+                this.$emit("loginOK", res.data.userName);
                 this.dialogShow = false;
               } else {
                 this.$message.error(res.err.desc);

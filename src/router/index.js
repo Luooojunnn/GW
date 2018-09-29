@@ -3,7 +3,9 @@ import Router from 'vue-router'
 import Home from '@/components/HomePage'
 import Index from '@/components/Index'
 import Pages from '@/components/Pages'
+import allPages from '@/components/allPages'
 import YzmForm from '@/components/YzmForm'
+import NotFound from '@/components/NotFound'
 
 Vue.use(Router)
 
@@ -26,6 +28,11 @@ export default new Router({
           component: Pages
         },
         {
+          path: 'allPages',
+          name: 'allPages',
+          component: allPages
+        },
+        {
           path: 'YzmForm',
           name: 'YzmForm',
           component: YzmForm
@@ -35,7 +42,7 @@ export default new Router({
     {
       path: '*',
       name: 'nopage',
-      component: Index
+      component: NotFound
     }
   ]
 })

@@ -1,6 +1,6 @@
 <template>
-  <div class="foot-area">
-     底部额外信息栏
+  <div>
+     404
   </div>  
 </template>
 <script>

@@ -1,7 +1,7 @@
 <template>
-  <div id='header'>
+  <div id='header' :style="{'border-bottom': (this.$route.path === '/index' || this.$route.path === '/YzmForm') ? 'inhert' : 'inhert'}">
     <div class="title">
-        <img class="logo" src="../../assets/logo.jpg" alt="LOGO">
+        <img class="logo" src="../../assets/logo.jpg" alt="LOGO" @click="goIndex">
         <div class="oper"  v-if="!username">
             <el-button class="search-btn" size='small' type="primary" @click="loginFc(0)">注册</el-button>
             <el-button class="search-btn" size='small' @click="loginFc(1)">登录</el-button>
@@ -22,6 +22,13 @@
             </ul>
         </nav>
     </div>
+    <!--面包屑繁琐，看情况再加-->
+    <!-- <el-breadcrumb class="breadcrumb" separator-class="el-icon-arrow-right" v-if="this.$route.path !== '/index' && this.$route.path !== '/YzmForm'">
+      <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+      <el-breadcrumb-item>活动管理</el-breadcrumb-item>
+      <el-breadcrumb-item>活动列表</el-breadcrumb-item>
+      <el-breadcrumb-item>活动详情</el-breadcrumb-item>
+    </el-breadcrumb> -->
   </div>  
 </template>
 <script>
@@ -96,12 +103,19 @@ export default {
           }
         })
         .catch();
+    },
+    goIndex() {
+      this.$router.push('/')
     }
   },
   watch: {
     name(username) {
       this.username = username;
-    }
+    },
+    // 面包屑的路由观察
+    // $route() {
+    //   console.log(this.$route)
+    // }
   }
 };
 </script>
@@ -116,6 +130,7 @@ export default {
     .logo {
       width: 430px;
       height: 90px;
+      cursor: pointer;
     }
     .oper {
       width: 273px;
@@ -173,6 +188,11 @@ export default {
         }
       }
     }
+  }
+  .breadcrumb {
+    padding-top: 15px;
+    border-top: solid 1px rgba(166, 166, 166, 0.3);
+    margin-top: 30px;
   }
 }
 </style>

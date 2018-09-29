@@ -1,6 +1,6 @@
 <template>
   <div class="module-news">
-     <div class="module-news-notice">
+     <div class="module-news-notice" @click="clickPage(category, id)">
          <h3>{{title}}</h3>
          <p>{{summary}}</p>
          <span class="module-news-detail">[详情]</span>
@@ -10,19 +10,21 @@
 </template>
 <script>
 import tabNews from "./tab-news";
+import mix from '../../mixins/clickPage'
 export default {
   data() {
     return {
       title: "",
       summary: "",
-      number: "",
+      id: 0,
+      category: '',
       tabNewsData: {}
     };
   },
   components: {
     tabNews
   },
-  created() {
+  mounted() {
     this.getDate();
   },
   methods: {
@@ -33,7 +35,8 @@ export default {
           if (+res.err.code === 200) {
             this.title = res.data.notice.title
             this.summary = res.data.notice.summary
-            this.number = res.data.notice.number
+            this.id = res.data.notice.id
+            this.category = res.data.notice.category
             this.tabNewsData = {
                 learningDynamic: res.data.learningDynamic,
                 announcement: res.data.announcement
@@ -46,12 +49,13 @@ export default {
           console.log(e);
         });
     }
-  }
+  },
+  mixins: [mix]
 };
 </script>
 <style lang="scss" scoped>
 .module-news {
-  border: solid 1px red;
+//   border: solid 1px red;
   margin-left: 30px;
   padding: 10px 12px;
   .module-news-notice {
