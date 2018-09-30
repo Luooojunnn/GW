@@ -12,9 +12,7 @@ const colors = require('colors')
  * 环境判断
 */
 const ENV = process.argv[2] && process.argv[2].split('=')[1]
-/**
- * 本地服务器
-*/
+
 http.createServer((req, res) => {
   try {
     /**
@@ -25,27 +23,9 @@ http.createServer((req, res) => {
     if (url.parse(req.url).pathname !== '/favicon.ico') {
       // 判断请求方式，请求参数
       let reqMethod = req.method === 'GET' ? 'GET' : (req.method === 'POST' ? 'POST' : req.method)
-      // 保存请求参数，用于转发
-      let paramsData = ''
-      if (reqMethod === 'GET') {
-        paramsData = url.parse(req.url, true).search
-        console.log(`接口名 ${url.parse(req.url, true).pathname}，采用 ${reqMethod} 请求方式，传递的参数是 ${JSON.stringify(url.parse(req.url, true).query)}`)
-      } else if (reqMethod === 'POST') {
-        let res = ''
-        req.on('data', (reqData) => {
-          res += reqData
-        })
-        req.on('end', (reqData) => {
-          paramsData = res
-          console.log(paramsData)
-          console.log(`接口名 ${url.parse(req.url, true).pathname}，采用 ${reqMethod} 请求方式，传递的参数是 ${res.toString('utf8')}`)
-        })
-      } else {
-        console.log(`接口名 ${url.parse(req.url, true).pathname}，采用 ${reqMethod} 请求方式，传递的参数是 暂时未写!`)
-      }
+
       // 寻址回值
       if (apiFile[url.parse(req.url, true).pathname.substring(1)]) {
-        console.log(reqMethod)
         if (reqMethod === 'OPTIONS') {
           res.writeHead(200, {
             'Access-Control-Allow-Origin': '*',
@@ -59,7 +39,22 @@ http.createServer((req, res) => {
         // TODO 根据环境判断是够需要一个代理转发
         if (ENV === 'dev') {
           console.log('在dev环境'.red)
-          
+          // 保存请求参数，用于转发
+          let paramsData = ''
+          if (reqMethod === 'GET') {
+            paramsData = url.parse(req.url, true).search
+          } else if (reqMethod === 'POST') {
+            let res = ''
+            req.on('data', (reqData) => {
+              res += reqData
+            })
+            req.on('end', (reqData) => {
+              paramsData = res
+              console.log(paramsData)
+            })
+          }
+          console.log(`接口名 ${url.parse(req.url, true).pathname}，采用 ${reqMethod} 请求方式，传递的参数是 ${paramsData}`)
+
           let finalAddress = path.join(__dirname, '../../data/', apiAdress)
           // dev环境 - 读取接口，输出json
           let apiData = fs.readFileSync(finalAddress)
@@ -69,27 +64,39 @@ http.createServer((req, res) => {
           // online环境 - 代理转发 PS: hostname 不含协议
           let hn = url.parse(apiAdress).hostname
           let pt = url.parse(apiAdress).path
-          let postData = ''
-          if (reqMethod === 'GET') {
-            pt = url.parse(apiAdress).path + paramsData
-          } else if (reqMethod === 'POST') {
-            setTimeout(() => {
-              postData = JSON.stringify(paramsData)
-            }, 100)
-          }
-          /**
-           * 将 host 头部信息改成online的域名信息，否则host会指向代码里的请求的localhost:9000
-           * !!! 为什么一定要用 header ，因为可以在做爬虫的时候，冒充浏览器端，越过有些代码的机器人识别
-           * */
           req.headers.host = hn //url.parse(apiAdress).host
-          HCLIENTFC({
-            hostname: hn,
-            path: pt,
-            method: reqMethod,
-            headers: req.headers
-          }, (data) => {
-            res.end(data)
-          }, postData)
+          if (reqMethod === 'GET') {
+            pt = '' + pt + url.parse(req.url, true).search
+            console.log(`接口名 ${url.parse(req.url, true).pathname}，采用 ${reqMethod} 请求方式，传递的参数是 ${url.parse(req.url, true).search}`)
+            HCLIENTFC({
+              hostname: hn + '',
+              path: pt + '',
+              method: reqMethod + '',
+              headers: req.headers
+            }, (data) => {
+              res.end(data)
+            }, '')
+          } else if (reqMethod === 'POST') {
+            let res = ''
+            req.on('data', (reqData) => {
+              res += reqData
+            })
+            req.on('end', (reqData) => {
+              console.log(`接口名 ${url.parse(req.url, true).pathname}，采用 ${reqMethod} 请求方式，传递的参数是 ${res}`)
+              /**
+               * 将 host 头部信息改成online的域名信息，否则host会指向代码里的请求的localhost:9000
+               * !!! 为什么一定要用 header ，因为可以在做爬虫的时候，冒充浏览器端，越过有些代码的机器人识别
+               * */
+              HCLIENTFC({
+                hostname: hn + '',
+                path: pt + '',
+                method: reqMethod + '',
+                headers: req.headers
+              }, (data) => {
+                res.end(data)
+              }, res)
+            })
+          }
         }
       } else {
         res.writeHead(404)
@@ -116,13 +123,13 @@ http.createServer((req, res) => {
 */
 function HCLIENTFC ({ hostname, path = '/', method = 'GET', headers }, callback = () => { }, v = '') {
   let resData = ''
-  console.log('接口的信息参数：========'.blue)
+  console.log('接口的信息参数：========1'.blue)
   console.log('hostname:' + hostname)
   console.log('path:' + path)
   console.log('method:' + method)
   console.log(headers)
   console.log('post发送的数据v:' + v)
-  console.log('接口的信息参数：========'.blue)
+  console.log('接口的信息参数：--------2'.blue)
   /**
    * 由于发送了header，其accept接受的数据类型可能和返回的数据类型不一致，所以可能导致接口超时，必要时，可去掉发送header
   */
