@@ -9,7 +9,7 @@
     },
     "registeredApi": {
         "dev": "./mock-data/registered.json",
-        "online": ""
+        "online": "http://chstpa.bdpku.com/registered"
     },
     "yzmApi": {
         "dev": "./mock-data/yzm.json",
@@ -46,5 +46,9 @@
     "specificPagesApi": {
         "dev": "./mock-data/specificPages.json",
         "online": "" 
+    },
+    "setPhoneCodeApi": {
+        "dev": "./mock-data/setPhoneCode.json",
+        "online": "http://chstpa.bdpku.com/verify/getPhoneCode" 
     }
 }

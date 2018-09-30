@@ -62,7 +62,8 @@ export default {
 <style lang="scss" scoped>
   .info-area {
     display: inline-block;
-    border: solid 1px red;
+    background-color: #eaeaea;
+    border-radius: 4px;
     width: 48%;
     h3 {
       text-align: center;

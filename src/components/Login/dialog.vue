@@ -11,7 +11,7 @@
                 </el-form-item>
                 <el-form-item label="手机号" :label-width="formLabelWidth" v-if="!showStatus['whitchOper']" prop='phone'>
                     <el-input size='small' class="sjh" v-model="form.phone" autocomplete="off"></el-input>
-                    <el-button size='small' class="btn-fsyzm" type='primary'>发送验证码</el-button>
+                    <el-button size='small' class="btn-fsyzm" type='primary' @click="setPhoneCode">发送验证码</el-button>
                 </el-form-item>
                 <el-form-item v-if="showStatus['whitchOper']" label="密码" :label-width="formLabelWidth" prop='psw'>
                     <el-input size='small' v-model="form.psw" autocomplete="off" type='password'></el-input>
@@ -143,6 +143,18 @@ export default {
             });
         }
       });
+    },
+    setPhoneCode() {
+      this.http
+      .post('http://localhost:9000/setPhoneCodeApi', {
+        phone: this.form.phone
+      })
+      .then(res => {
+        console.log(res)
+      })
+      .catch(e => {
+        console.log(e)
+      })
     }
   }
 };

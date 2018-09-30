@@ -51,9 +51,5 @@ export default {
         background-color: #09abbf;
     }
   }
-
-  .oper-col-item:hover {
-    // background-color: pink;
-  }
 }
 </style>
