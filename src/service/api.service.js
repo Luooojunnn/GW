@@ -26,12 +26,11 @@ http.createServer((req, res) => {
 
       // 寻址回值
       if (apiFile[url.parse(req.url, true).pathname.substring(1)]) {
+        res.setHeader('Access-Control-Allow-Origin', '*')
+        res.setHeader('Allow', '*')
+        res.setHeader('Access-Control-Allow-Headers', '*')
+
         if (reqMethod === 'OPTIONS') {
-          res.writeHead(200, {
-            'Access-Control-Allow-Origin': '*',
-            'Allow': '*',
-            'Access-Control-Allow-Headers': '*'
-          })
           res.end('')
         }
         // 根据环境变量选择接口
@@ -73,7 +72,8 @@ http.createServer((req, res) => {
               path: pt + '',
               method: reqMethod + '',
               headers: req.headers
-            }, (data) => {
+            }, (data, statusCode, header) => {
+              res.writeHead(Number(statusCode), header)
               res.end(data)
             }, '')
           } else if (reqMethod === 'POST') {
@@ -92,7 +92,8 @@ http.createServer((req, res) => {
                 path: pt + '',
                 method: reqMethod + '',
                 headers: req.headers
-              }, (data) => {
+              }, (data, statusCode, header) => {
+                res.writeHead(Number(statusCode), header)
                 res.end(data)
               }, res)
             })
@@ -145,9 +146,9 @@ function HCLIENTFC ({ hostname, path = '/', method = 'GET', headers }, callback 
     })
     res.on('end', () => {
       console.log('接口返回结果是：', resData.toString())
-      console.log('测试环境返回响应头', res.headers)
-      callback(resData)
-      // return resData.toString()
+      console.log('测试环境返回状态码：', res.statusCode)
+      console.log('测试环境返回响应头：', res.headers)
+      callback(resData, res.statusCode, res.headers)
     })
   })
   HCLIENT.on('error', (e) => {
