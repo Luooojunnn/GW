@@ -5,6 +5,7 @@ import Index from '@/components/Index'
 import Pages from '@/components/Pages'
 import allPages from '@/components/allPages'
 import YzmForm from '@/components/YzmForm'
+import VIPSearch from '@/components/VIPSearch'
 import NotFound from '@/components/NotFound'
 
 Vue.use(Router)
@@ -36,6 +37,11 @@ export default new Router({
           path: 'YzmForm',
           name: 'YzmForm',
           component: YzmForm
+        },
+        {
+          path: 'VIPSearch',
+          name: 'VIPSearch',
+          component: VIPSearch
         }
       ]
     },

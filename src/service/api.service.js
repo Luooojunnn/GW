@@ -64,8 +64,11 @@ http.createServer((req, res) => {
           let hn = url.parse(apiAdress).hostname
           let pt = url.parse(apiAdress).path
           req.headers.host = hn //url.parse(apiAdress).host
+          let sRes = res
           if (reqMethod === 'GET') {
-            pt = '' + pt + url.parse(req.url, true).search
+            if (url.parse(req.url, true).search) {
+              pt = '' + pt + url.parse(req.url, true).search
+            }
             console.log(`接口名 ${url.parse(req.url, true).pathname}，采用 ${reqMethod} 请求方式，传递的参数是 ${url.parse(req.url, true).search}`)
             HCLIENTFC({
               hostname: hn + '',
@@ -73,8 +76,8 @@ http.createServer((req, res) => {
               method: reqMethod + '',
               headers: req.headers
             }, (data, statusCode, header) => {
-              res.writeHead(Number(statusCode), header)
-              res.end(data)
+              sRes.writeHead(Number(statusCode), header)
+              sRes.end(data)
             }, '')
           } else if (reqMethod === 'POST') {
             let res = ''
@@ -93,8 +96,8 @@ http.createServer((req, res) => {
                 method: reqMethod + '',
                 headers: req.headers
               }, (data, statusCode, header) => {
-                res.writeHead(Number(statusCode), header)
-                res.end(data)
+                sRes.writeHead(Number(statusCode), header)
+                sRes.end(data)
               }, res)
             })
           }

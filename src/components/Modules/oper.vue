@@ -4,7 +4,7 @@
             <img class="item-img" src="../../assets/join.png" alt="join">
             <p>加入协会</p>
         </div>
-        <div class="oper-col-item">
+        <div class="oper-col-item" @click="jumpTo('VIPSearch')">
             <img class="item-img" src="../../assets/person.png" alt="person">
             <p>会员查询</p>
         </div>
@@ -20,7 +20,12 @@
 </template>
 <script>
 export default {
-  components: {}
+  components: {},
+  methods: {
+      jumpTo(path) {
+          this.$router.push(path)
+      }
+  }
 };
 </script>
 <style lang="scss" scoped>

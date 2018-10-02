@@ -60,11 +60,7 @@ export default {
     },
     getData(url) {
       this.http
-        .get(url, {
-          params: {
-            aa: 111
-          }
-        })
+        .get(url)
         .then(res => {
           if (+res.err.code === 200) {
             this.navInfo = res.data.navInfo;

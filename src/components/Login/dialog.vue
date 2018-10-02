@@ -94,6 +94,7 @@ export default {
       .then(res => {
         if (res.err.code === 200) {
           this.yzmImg = res.data.img
+          console.log(this.yzmImg)
           this.ctoken = res.data.token
         } else {
           this.$message.error(res.err.desc);
