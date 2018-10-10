@@ -5,8 +5,8 @@
   "author": "luojuna <luojuna@jiedaibao.com>",
   "private": true,
   "scripts": {
-    "dev": "npm run apiserve ENV=dev & npm run start",
-    "online": "npm run apiserve ENV=online & npm run start",
+    "dev": "npm run start & npm run apiserve ENV=dev",
+    "online": "npm run start & npm run apiserve ENV=online",
     "start": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "unit": "jest --config test/unit/jest.conf.js --coverage",
     "e2e": "node test/e2e/runner.js",
