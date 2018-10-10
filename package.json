@@ -5,8 +5,8 @@
   "author": "luojuna <luojuna@jiedaibao.com>",
   "private": true,
   "scripts": {
-    "dev": "npm run start & npm run apiserve ENV=dev",
-    "online": "npm run start & npm run apiserve ENV=online",
+    "dev": " concurrently \"npm run apiserve ENV=dev\" \"npm run start\" ",
+    "online": " concurrently \"npm run apiserve ENV=online\" \"npm run start\" ",
     "start": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "unit": "jest --config test/unit/jest.conf.js --coverage",
     "e2e": "node test/e2e/runner.js",
@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "concurrently": "^4.0.1",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },
