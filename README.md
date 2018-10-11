@@ -2,7 +2,7 @@
 
 运行步骤：
 
-	1. git clone git@github.com:Luooojunnn/GW.git
+	1. git clone https://github.com/Luooojunnn/GW.git
 	2. npm install
 
 	***查看是否安装了node，在控制台输出'node'看是否进入node运行时***
