@@ -57,6 +57,6 @@
     },
     "vipSearchApi": {
         "dev": "./mock-data/vipSearch.json",
-        "online": "http://chstpa.bdpku.com/common/foundPassword"  
+        "online": "http://chstpa.bdpku.com/member/searchMember"  
     }
 }

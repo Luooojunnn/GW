@@ -35,10 +35,12 @@ export default {
   methods: {
     submitFc() {
       this.form.personNum && this.http
-        .post(
+        .get(
           "http://localhost:9000/vipSearchApi",
           {
-            name: this.form.personNum
+            params: {
+              name: this.form.personNum
+            }
           }
         )
         .then(res => {

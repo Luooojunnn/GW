@@ -22,7 +22,7 @@
             </ul>
         </nav>
     </div>
-    <div v-if="routerName !== 'Index'" class="breadcrumb"><span @click="$router.push('/')" style="cursor: pointer;">主页</span> > <span>{{routerName}}</span></div>
+    <div v-if="routerName !== 'Index'" class="breadcrumb"><span @click="$router.push('/')" style="cursor: pointer;color: #000;">主页</span> > <span>{{routerName}}</span></div>
     <!--面包屑繁琐，看情况再加-->
     <!-- <el-breadcrumb class="breadcrumb" separator-class="el-icon-arrow-right" v-if="this.$route.path !== '/index' && this.$route.path !== '/YzmForm'">
       <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
@@ -41,7 +41,7 @@ export default {
       input: "",
       navInfo: [],
       showStatus: [],
-      routerName: ''
+      routerName: 'Index'
     };
   },
   created() {

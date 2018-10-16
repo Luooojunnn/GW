@@ -21,7 +21,7 @@ export default {
     data() {
         return {
             pagesData: [],
-            initNum: 1,
+            initNum: 0,
             nums: 0
         }
     },
@@ -55,7 +55,7 @@ export default {
       })
     },
     changePage(v) {
-        this.initNum = +v
+        this.initNum = +v - 1
         this.getData()
     }
   },
