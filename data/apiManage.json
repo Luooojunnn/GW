@@ -17,35 +17,35 @@
     },
     "exitLoginApi": {
         "dev": "./mock-data/exitLogin.json",
-        "online": "" 
+        "online": "http://chstpa.bdpku.com/logout" 
     },
     "newsApi": {
         "dev": "./mock-data/news.json",
-        "online": "" 
+        "online": "http://chstpa.bdpku.com/article/getNews" 
     },
     "meetingApi": {
         "dev": "./mock-data/meeting.json",
-        "online": "" 
+        "online": "http://chstpa.bdpku.com/article/getArticle" 
     },
     "memberApi": {
         "dev": "./mock-data/member.json",
-        "online": "" 
+        "online": "http://chstpa.bdpku.com/article/getArticle" 
     },
     "libraryApi": {
         "dev": "./mock-data/library.json",
-        "online": "" 
+        "online": "http://chstpa.bdpku.com/article/getArticle" 
     },
     "learningDataApi": {
         "dev": "./mock-data/learningData.json",
-        "online": "" 
+        "online": "http://chstpa.bdpku.com/article/getArticle" 
     },
     "allPagesApi": {
         "dev": "./mock-data/allPages.json",
-        "online": "" 
+        "online": "http://chstpa.bdpku.com/article/getArticle" 
     },
     "specificPagesApi": {
         "dev": "./mock-data/specificPages.json",
-        "online": "" 
+        "online": "http://chstpa.bdpku.com/article/getArticle" 
     },
     "setPhoneCodeApi": {
         "dev": "./mock-data/setPhoneCode.json",
