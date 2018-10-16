@@ -22,6 +22,7 @@
             </ul>
         </nav>
     </div>
+    <div v-if="routerName !== 'Index'" class="breadcrumb"><span @click="$router.push('/')" style="cursor: pointer;">主页</span> > <span>{{routerName}}</span></div>
     <!--面包屑繁琐，看情况再加-->
     <!-- <el-breadcrumb class="breadcrumb" separator-class="el-icon-arrow-right" v-if="this.$route.path !== '/index' && this.$route.path !== '/YzmForm'">
       <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
@@ -39,7 +40,8 @@ export default {
       username: "",
       input: "",
       navInfo: [],
-      showStatus: []
+      showStatus: [],
+      routerName: ''
     };
   },
   created() {
@@ -113,9 +115,10 @@ export default {
       this.username = username;
     },
     // 面包屑的路由观察
-    // $route() {
-    //   console.log(this.$route)
-    // }
+    $route() {
+      console.log(this.$route)
+      this.routerName = this.$route.name
+    }
   }
 };
 </script>
@@ -193,6 +196,9 @@ export default {
     padding-top: 15px;
     border-top: solid 1px rgba(166, 166, 166, 0.3);
     margin-top: 30px;
+    span {
+      color: red;
+    }
   }
 }
 </style>

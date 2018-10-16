@@ -2,7 +2,7 @@
   <div class="pages-wrap">
      <div class="all-pages">
          <div v-for="item in pagesData" class="title-item">
-             <p>{{item.title}} <span class="time">{{item.date}}</span></p>
+             <p @click="clickPage(item.category, item.id)">{{item.title}} <span class="time">{{item.date}}</span></p>
          </div>
      </div>
      <div class="pag">
@@ -16,6 +16,7 @@
   </div>  
 </template>
 <script>
+import mix from '../../mixins/clickPage'
 export default {
     data() {
         return {
@@ -57,7 +58,8 @@ export default {
         this.initNum = +v
         this.getData()
     }
-  }
+  },
+  mixins: [mix]
 }
 </script>
 <style lang="scss" scoped>

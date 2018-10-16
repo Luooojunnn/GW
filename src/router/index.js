@@ -25,22 +25,22 @@ export default new Router({
         },
         {
           path: 'Pages',
-          name: 'Pages',
+          name: '文章',
           component: Pages
         },
         {
           path: 'allPages',
-          name: 'allPages',
+          name: '所有文章',
           component: allPages
         },
         {
           path: 'YzmForm',
-          name: 'YzmForm',
+          name: '找回密码',
           component: YzmForm
         },
         {
           path: 'VIPSearch',
-          name: 'VIPSearch',
+          name: '会员搜索',
           component: VIPSearch
         }
       ]
