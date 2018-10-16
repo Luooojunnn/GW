@@ -1,4 +1,7 @@
 <!--
+import { clearInterval } from 'timers';
+import { setInterval } from 'timers';
+import { setTimeout } from 'timers';
         弹出层！
         1. 注册登录motaikuang
 -->
@@ -11,7 +14,8 @@
                 </el-form-item>
                 <el-form-item label="手机号" :label-width="formLabelWidth" v-if="!showStatus['whitchOper']" prop='phone'>
                     <el-input size='small' class="sjh" v-model="form.phone" autocomplete="off"></el-input>
-                    <el-button size='small' class="btn-fsyzm" type='primary' @click="setPhoneCode">发送验证码</el-button>
+                    <el-button size='small' class="btn-fsyzm" type='primary' @click="setPhoneCode" v-if="!timing" :disabled='!(form.phone.length === 11)'>发送验证码</el-button>
+                    <span v-if="timing" class="timing">{{timeNum}}s</span>
                 </el-form-item>
                 <el-form-item v-if="showStatus['whitchOper']" label="密码" :label-width="formLabelWidth" prop='psw'>
                     <el-input size='small' v-model="form.psw" autocomplete="off" type='password'></el-input>
@@ -30,8 +34,8 @@
                     <el-input size='small' v-model="form.psw" autocomplete="off" type='password'></el-input>
                 </el-form-item>
             </el-form>
-            <div class="forget-psd" v-if="showStatus['whitchOper']" @click="forgetPSD">
-                忘记密码
+            <div class="forget-psd" v-if="showStatus['whitchOper']">
+                <span @click="forgetPSD">忘记密码</span>
             </div>
             <div slot="footer" class="dialog-footer">
                 <el-button size='small' @click="dialogShow = false">取 消</el-button>
@@ -62,7 +66,9 @@ export default {
         ],
         psw: [{ required: true, message: "请填写密码", trigger: "blur" }],
         yzm: [{ required: true, message: "请填写验证码", trigger: "blur" }]
-      }
+      },
+      timing: false,
+      timeNum: 60
     };
   },
   watch: {
@@ -146,6 +152,7 @@ export default {
       });
     },
     setPhoneCode() {
+      this.timing = true
       this.http
       .post('http://localhost:9000/setPhoneCodeApi', {
         phone: this.form.phone
@@ -156,6 +163,18 @@ export default {
       .catch(e => {
         console.log(e)
       })
+      this.timeEndFc()
+    },
+    timeEndFc() {
+      let timer = setInterval(() => {
+        this.timeNum--
+        if (this.timeNum <= 0) {
+          clearInterval(timer)
+          this.timing = false
+          this.timeNum = 60
+        } 
+        console.log(this.timeNum)
+      }, 1000)
     }
   }
 };
@@ -207,8 +226,14 @@ export default {
   .forget-psd {
     padding-top: 10px;
     text-align: right;
-    text-decoration: underline;
-    cursor: pointer;
+    span {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
+  .timing {
+    float: right;
+    margin-right: 30px;
   }
 }
 </style>

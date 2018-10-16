@@ -50,5 +50,13 @@
     "setPhoneCodeApi": {
         "dev": "./mock-data/setPhoneCode.json",
         "online": "http://chstpa.bdpku.com/verify/getPhoneCode" 
+    },
+    "foundPasswordApi": {
+        "dev": "./mock-data/foundPassword.json",
+        "online": "http://chstpa.bdpku.com/common/foundPassword" 
+    },
+    "vipSearchApi": {
+        "dev": "./mock-data/vipSearch.json",
+        "online": "http://chstpa.bdpku.com/common/foundPassword"  
     }
 }

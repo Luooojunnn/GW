@@ -76,6 +76,7 @@ export default {
     }
     p {
         margin-bottom: 0;
+        text-indent: 2em;
     }
   }
 }

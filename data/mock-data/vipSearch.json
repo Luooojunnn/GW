@@ -1,0 +1,23 @@
+{
+    "err": {
+        "code": 200,
+        "msg": "OK",
+        "desc": "请求成功"
+    },
+    "data": {
+        "vipInfo": [
+            {
+                "name": "郭润生",
+                "sex": "男",
+                "hospital": "北京女子仁爱医院",
+                "rankName": "妇产科主治医师"
+            },
+            {
+                "name": "郭润生",
+                "sex": "女",
+                "hospital": "天坛医院",
+                "rankName": "泌尿科主任"
+            }
+        ]
+    }
+}

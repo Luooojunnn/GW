@@ -37,7 +37,8 @@ export default {
           params: {
               c: this.$route.query.c,
               id: this.$route.query.id,
-              num: this.initNum
+              num: this.initNum,
+              all: 1
           }
       })
       .then(res => {
@@ -73,8 +74,9 @@ export default {
                 cursor: pointer;
                 padding-left: 1em;
                 margin: 0;
+                padding-right: 1em;
             }
-            &:nth-child(2n) {
+            &:nth-child(2n+1) {
                 background-color: #cee4e4;
                 border-radius: 4px;
             }
@@ -82,6 +84,7 @@ export default {
     }
     .pag {
         text-align: right;
+        margin-top: 2em;
     }
 }
     

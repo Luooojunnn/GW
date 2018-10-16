@@ -33,7 +33,9 @@ export default {
     methods: {
       handleClick(tab, event) {
         let i = +tab.index ? 'announcement' : 'learningDynamic'
+        console.log(this.allData)
         this.category = +this.allData[i]['category']
+        console.log( this.category)
       }
     },
   components:{

@@ -2,13 +2,23 @@
   <div class="vip-search-form">
     <div class="vip-search-form-wrap">
       <el-form class="vip-search-table" ref="form" :model="form" label-width="100px">
-       <el-form-item label="会员号">
-        <el-input size='small' v-model="form.personNum"></el-input>
+       <el-form-item label="姓名">
+        <el-input class="name-search" size='small' v-model="form.personNum"></el-input>
+        <el-button size='small' type="primary" @click="submitFc">查询</el-button>
       </el-form-item>
       
-      <el-button size='small' type="primary">查询</el-button>
      </el-form>
     </div>
+    <div class="result-info">
+        <ul>
+          <li v-for="item in infoList">
+            姓名：{{item.name}}
+            性别：{{item.sex}}
+            医院：{{item.hospital}}
+            职级：{{item.rankName}}
+          </li>
+        </ul>
+      </div>
   </div>  
 </template>
 <script>
@@ -17,16 +27,28 @@ export default {
     return {
       form: {
         personNum: ""
-      }
+      },
+      infoList: []
     };
   },
   components: {},
   methods: {
-    goback() {
-      this.$router.go(-1);
-    },
-    updataYZM() {
-      
+    submitFc() {
+      this.form.personNum && this.http
+        .post(
+          "http://localhost:9000/vipSearchApi",
+          {
+            name: this.form.personNum
+          }
+        )
+        .then(res => {
+          if (+res.err.code === 200) {
+            this.infoList = res.data.vipInfo
+          }
+        })
+        .catch(e => {
+          console.log(e);
+        });
     }
   }
 };
@@ -47,6 +69,13 @@ export default {
 .vip-search-table {
   .el-form-item {
     margin-bottom: 10px;
+    .name-search {
+      width: 60%;
+    }
+    button {
+      float: right;
+      margin-top: 4px;
+    }
   }
 }
 .btn-fsyzm {
@@ -74,6 +103,11 @@ export default {
         text-align: center;
         margin-left: -100px;
       }
+    }
+  }
+  .result-info {
+    ul {
+      // padding-left: 100px;s
     }
   }
 }

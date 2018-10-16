@@ -22,19 +22,19 @@ export default {
     switch (this.title) {
       case 'meeting': 
         this.tit = '会议'
-        this.getData('http://localhost:9000/meetingApi')
+        this.getData('http://localhost:9000/meetingApi?c=4&id=0')
         break
       case 'member':
         this.tit = '会员风采'
-        this.getData('http://localhost:9000/memberApi')
+        this.getData('http://localhost:9000/memberApi?c=5&id=0')
         break
       case 'library':
         this.tit = '医用组织库'
-        this.getData('http://localhost:9000/libraryApi')
+        this.getData('http://localhost:9000/libraryApi?c=6&id=0')
         break
       case 'learningData':
         this.tit = '学术资料'
-        this.getData('http://localhost:9000/learningDataApi')
+        this.getData('http://localhost:9000/learningDataApi?c=7&id=0')
         break
     }
   },
