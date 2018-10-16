@@ -12,10 +12,10 @@
     <div class="result-info">
         <ul>
           <li v-for="item in infoList">
-            姓名：{{item.name}}
-            性别：{{item.sex}}
-            医院：{{item.hospital}}
-            职级：{{item.rankName}}
+            {{item.name}} &nbsp;
+            {{item.sex}} &nbsp;
+            {{item.hospital}} &nbsp;
+            {{item.rankName}}
           </li>
         </ul>
       </div>
@@ -106,8 +106,18 @@ export default {
     }
   }
   .result-info {
+    width: 70%;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 4px 4px 2px #ccc;
+    padding-left: 2em;
     ul {
-      // padding-left: 100px;s
+      padding: 1em 0 1em 0;
+      list-style-type: none;
+      li {
+        margin-bottom: 1em;
+      }
     }
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <div class="all-content-wrap">
     <Header @loginToast="loginToast" :name="name"></Header>
-    <router-view class="view-model"></router-view>
+    <router-view class="view-model" @loginToast="loginToast"></router-view>
     <bottomInfo></bottomInfo>
     <Login-dialog :showStatus='showStatus' @loginOK="loginOK"></Login-dialog>
   </div>  

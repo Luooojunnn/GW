@@ -1,6 +1,6 @@
 <template>
     <div class="oper-col">
-        <div class="oper-col-item">
+        <div class="oper-col-item" @click="join(0)">
             <img class="item-img" src="../../assets/join.png" alt="join">
             <p>加入协会</p>
         </div>
@@ -24,6 +24,9 @@ export default {
   methods: {
       jumpTo(path) {
           this.$router.push(path)
+      },
+      join(v) {
+          this.$emit("loginToast", v);
       }
   }
 };

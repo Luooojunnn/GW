@@ -5,7 +5,7 @@
       <news class="news"></news>
     </div>
     <div>
-      <oper></oper>
+      <oper @loginToast='loginToast'></oper>
     </div>
     <div class="wrap-news">
       <div class="wrap-news-col">
@@ -38,6 +38,12 @@ export default {
     tabNews,
     infoArea,
     carouselAbout,
+  },
+  methods: {
+    loginToast(v) {
+      console.log(v)
+      this.$emit("loginToast", v);
+    }
   }
 };
 </script>
