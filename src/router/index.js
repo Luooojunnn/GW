@@ -9,6 +9,7 @@ import VIPSearch from '@/components/VIPSearch'
 import NotFound from '@/components/NotFound'
 
 import middle from '@/managePlatform/middle'
+import publishPage from '@/managePlatform/publishPage'
 
 Vue.use(Router)
 
@@ -50,7 +51,15 @@ const router = new Router({
     {
       path: '/backPlatform',
       name: 'middle',
-      component: middle
+      component: middle,
+      redirect: 'backPlatform/publishPage',
+      children: [
+        {
+          path: 'publishPage',
+          name: '文章发布',
+          component: publishPage
+        }
+      ]
     },
     {
       path: '*',
