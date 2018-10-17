@@ -32,6 +32,8 @@ http.createServer((req, res) => {
 
         if (reqMethod === 'OPTIONS') {
           res.end('')
+          console.log(`接口名 ${url.parse(req.url, true).pathname}，采用 ${reqMethod} 请求方式`)
+          return
         }
         // 根据环境变量选择接口
         let apiAdress = apiFile[url.parse(req.url, true).pathname.substring(1)][ENV]
@@ -42,17 +44,17 @@ http.createServer((req, res) => {
           let paramsData = ''
           if (reqMethod === 'GET') {
             paramsData = url.parse(req.url, true).search
+            console.log(`接口名 ${url.parse(req.url, true).pathname}，采用 ${reqMethod} 请求方式，传递的参数是 ${paramsData}`)
           } else if (reqMethod === 'POST') {
-            let res = ''
+            let postDate = ''
             req.on('data', (reqData) => {
-              res += reqData
+              postDate += reqData
             })
             req.on('end', (reqData) => {
-              paramsData = res
-              console.log(paramsData)
+              paramsData = postDate
+              console.log(`接口名 ${url.parse(req.url, true).pathname}，采用 ${reqMethod} 请求方式，传递的参数是 ${paramsData}`)
             })
           }
-          console.log(`接口名 ${url.parse(req.url, true).pathname}，采用 ${reqMethod} 请求方式，传递的参数是 ${paramsData}`)
 
           let finalAddress = path.join(__dirname, '../../data/', apiAdress)
           // dev环境 - 读取接口，输出json
