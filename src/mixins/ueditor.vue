@@ -5,10 +5,10 @@
 </template>
 
 <script>
-  import AppConfig from '@/config'
-  import '../../static/ueditor/ueditor.config.js'
-  import '../../static/ueditor/ueditor.all.js'
-  import '../../static/ueditor/lang/zh-cn/zh-cn.js'
+  // import AppConfig from '@/config'
+  import '../../static/ueditor.config.js'
+  import '../../static/ueditor.all.js'
+  import '../../static/lang/zh-cn/zh-cn.js'
 
   export default {
     name: "UEditor",

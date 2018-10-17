@@ -24,7 +24,7 @@
             </el-form-item>
             <el-form-item label="内容" prop='editorContent'>
                 <!-- <div id="editorElem"></div> -->
-
+                <ueditorOne ref="diseaseFileUeditor"></ueditorOne>
             </el-form-item>
             <el-form-item>
                 <el-button type="primary" @click="onSubmit">发布</el-button>
@@ -36,7 +36,9 @@
 
 <script>
 // import E from 'wangeditor'
-import {UEditor} from '../mixins/udeitor.js'
+// import {UEditor} from '../mixins/udeitor.js'
+import ueditorOne from '../mixins/ueditor.vue'
+
 export default {
     data() {
       return {
@@ -65,6 +67,9 @@ export default {
         //   this.form.editorContent = html
         // }
         // editor.create()
+    },
+    components: {
+        ueditorOne
     }
 }
 </script>
