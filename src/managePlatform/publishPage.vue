@@ -24,7 +24,7 @@
             </el-form-item>
             <el-form-item label="内容" prop='editorContent'>
                 <!-- <div id="editorElem"></div> -->
-                <ueditorOne ref="diseaseFileUeditor"></ueditorOne>
+                <!-- <ueditorOne ref="diseaseFileUeditor"></ueditorOne> -->
             </el-form-item>
             <el-form-item>
                 <el-button type="primary" @click="onSubmit">发布</el-button>
