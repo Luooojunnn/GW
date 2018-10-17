@@ -79,6 +79,10 @@ export default {
      * ps 本来想直接操作 this.name 但是报警告了，不要直接操作props
      */
     judge() {
+      if (localStorage.getItem("TIMEFIIL") && new Date().getTime() > localStorage.getItem("TIMEFIIL")) {
+        localStorage.clear()
+        return ;
+      }
       let logined =
         localStorage.getItem("TOKEN") &&
         new Date().getTime() < localStorage.getItem("TIMEFIIL");
@@ -93,7 +97,7 @@ export default {
         })
         .then(res => {
           if (+res.err.code === 200) {
-            let arr = ["TOKEN", "USERNAME", "TIMEFIIL"];
+            let arr = ["TOKEN", "USERNAME", "TIMEFIIL", "isAdmin"];
             Object.keys(localStorage).forEach(item => {
               if (arr.includes(item)) {
                 localStorage.removeItem(item);

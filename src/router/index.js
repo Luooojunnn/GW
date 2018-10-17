@@ -8,9 +8,11 @@ import YzmForm from '@/components/YzmForm'
 import VIPSearch from '@/components/VIPSearch'
 import NotFound from '@/components/NotFound'
 
+import middle from '@/managePlatform/middle'
+
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   routes: [
     {
       path: '/',
@@ -46,9 +48,16 @@ export default new Router({
       ]
     },
     {
+      path: '/backPlatform',
+      name: 'middle',
+      component: middle
+    },
+    {
       path: '*',
       name: 'nopage',
       component: NotFound
     }
   ]
 })
+
+export default router

@@ -93,7 +93,6 @@ export default {
           this.timing = false
           this.timeNum = 60
         } 
-        console.log(this.timeNum)
       }, 1000)
     },
     submitFc() {
@@ -105,6 +104,12 @@ export default {
           )
           .then(res => {
             console.log(res)
+            if (+res.err.code === 200) {
+              this.$emit('loginToast', 1)
+              this.$router.push('/')
+            } else {
+              this.$message.error(res.err.desc);
+            }
           })
           .catch(e => {
             console.log(e)

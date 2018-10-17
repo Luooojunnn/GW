@@ -35,7 +35,7 @@ import { setTimeout } from 'timers';
                 </el-form-item>
             </el-form>
             <div class="forget-psd" v-if="showStatus['whitchOper']">
-                <span @click="forgetPSD">忘记密码</span>
+                <span @click="forgetPSD" style="font-size: 12px;">找回密码</span>
             </div>
             <div slot="footer" class="dialog-footer">
                 <el-button size='small' @click="dialogShow = false">取 消</el-button>
@@ -141,6 +141,10 @@ export default {
                 // 改变头信息
                 this.$emit("loginOK", res.data.userName);
                 this.dialogShow = false;
+                if (res.data.isAdminUser) {
+                  localStorage.setItem("isAdmin", res.data.isAdminUser);
+                  this.$router.push({name: 'middle'})
+                }
               } else {
                 this.$message.error(res.err.desc);
               }
@@ -173,7 +177,6 @@ export default {
           this.timing = false
           this.timeNum = 60
         } 
-        console.log(this.timeNum)
       }, 1000)
     }
   }
