@@ -29,10 +29,12 @@ http.createServer((req, res) => {
         res.setHeader('Access-Control-Allow-Origin', '*')
         res.setHeader('Allow', '*')
         res.setHeader('Access-Control-Allow-Headers', '*')
+        res.setHeader('Access-Control-Allow-Methods', '*')
 
         if (reqMethod === 'OPTIONS') {
+          // console.log(res.getHeaders())
           res.end('')
-          console.log(`接口名 ${url.parse(req.url, true).pathname}，采用 ${reqMethod} 请求方式`)
+          console.log(`接口名 ${url.parse(req.url, true).pathname}，采用 ${reqMethod} 请求方式`.underline)
           return
         }
         // 根据环境变量选择接口
