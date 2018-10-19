@@ -29,10 +29,10 @@ http.createServer((req, res) => {
         // 根据环境变量选择接口
         let apiAdress = apiFile[url.parse(req.url, true).pathname.substring(1)][ENV]
 
-        res.setHeader("Access-Control-Allow-Origin", "*")
+        res.setHeader('Access-Control-Allow-Origin', '*')
         res.setHeader('Access-Control-Allow-Methods', 'OPTIONS,GET,POST,PUT,DELETE')
-        res.setHeader("Access-Control-Allow-Headers", "Origin,X-Requested-With,Content-Type,Accept,Authorization")
-        res.setHeader("content-type", "application/json; charset=utf-8")
+        res.setHeader('Access-Control-Allow-Headers', 'Origin,X-Requested-With,Content-Type,Accept,Authorization')
+        res.setHeader('content-type', 'application/json; charset=utf-8')
 
         if (reqMethod === 'OPTIONS') {
           console.log(res.getHeaders())
