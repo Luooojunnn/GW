@@ -7,7 +7,7 @@
             <el-button class="search-btn" size='small' @click="loginFc(1)">登录</el-button>
         </div>
         <div class="person-info" v-if="username">
-          <p>{{username}} <span v-if="+localStorage.getItem('isAdmin') === 1" class="back-plam" @click="goIndex('/backPlatform')">[回到后台]</span>  <span class="exit-btn" @click="exitFc">[退出]</span></p>
+          <p>{{username}} <span v-if="isAdmin" class="back-plam" @click="goIndex('/backPlatform')">[回到后台]</span>  <span class="exit-btn" @click="exitFc">[退出]</span></p>
         </div>
     </div>
     <div class="nav" v-if="this.$route.path === '/index'">
@@ -41,12 +41,14 @@ export default {
       input: "",
       navInfo: [],
       showStatus: [],
-      routerName: 'Index'
+      routerName: 'Index',
+      isAdmin: 0
     };
   },
   created() {
     this.getData("http://localhost:9000/navInfoApi");
     this.judge();
+    this.isAdmin = +localStorage.getItem('isAdmin')
   },
   methods: {
     showChild(v, k = -1) {
