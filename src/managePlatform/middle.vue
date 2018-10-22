@@ -26,8 +26,8 @@
             </el-col>
             <el-col class="col-wrap" :span='16' :offset='2'>
                 <div class="main-oper">
-                    <el-button size='small' type='success'>回到官网</el-button>
-                    <el-button size='small' type='danger'>退出登录</el-button>
+                    <el-button size='small' type='success' @click="jumpTo('/')">回到官网</el-button>
+                    <el-button size='small' type='danger' @click="exitFc">退出登录</el-button>
                 </div>
                 <router-view></router-view>
             </el-col>
@@ -40,6 +40,10 @@ export default {
   methods: {
     jumpTo(v) {
         this.$router.push(v)
+    },
+    exitFc() {
+        localStorage.clear();
+        this.jumpTo('/')
     }
   },
   beforeRouteEnter(to, from, next) {

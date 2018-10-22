@@ -67,6 +67,7 @@ export default {
     mounted() {
         var editor = new E('#editorElem')
         editor.customConfig.uploadImgShowBase64 = true
+        editor.customConfig.zIndex = 1
         editor.customConfig.onchange = (html) => {
           console.log(html)
           this.form.editorContent = html
@@ -94,6 +95,7 @@ export default {
     .publish-wrap {
         padding-top: 2em;
     }
+    
 </style>
 
 

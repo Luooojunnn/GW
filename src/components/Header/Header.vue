@@ -1,13 +1,13 @@
 <template>
   <div id='header' :style="{'border-bottom': (this.$route.path === '/index' || this.$route.path === '/YzmForm') ? 'inhert' : 'inhert'}">
     <div class="title">
-        <img class="logo" src="../../assets/logo.jpg" alt="LOGO" title="主页" @click="goIndex">
+        <img class="logo" src="../../assets/logo.jpg" alt="LOGO" title="主页" @click="goIndex('/')">
         <div class="oper"  v-if="!username">
             <el-button class="search-btn" size='small' type="primary" @click="loginFc(0)">注册</el-button>
             <el-button class="search-btn" size='small' @click="loginFc(1)">登录</el-button>
         </div>
         <div class="person-info" v-if="username">
-          <p>{{username}} <span class="exit-btn" @click="exitFc">[退出]</span></p>
+          <p>{{username}} <span v-if="+localStorage.getItem('isAdmin') === 1" class="back-plam" @click="goIndex('/backPlatform')">[回到后台]</span>  <span class="exit-btn" @click="exitFc">[退出]</span></p>
         </div>
     </div>
     <div class="nav" v-if="this.$route.path === '/index'">
@@ -110,8 +110,8 @@ export default {
         })
         .catch();
     },
-    goIndex() {
-      this.$router.push('/')
+    goIndex(v) {
+      this.$router.push(v)
     }
   },
   watch: {
@@ -150,9 +150,12 @@ export default {
     }
     .person-info {
       padding: 0 20px 0 0;
-      .exit-btn {
+      .exit-btn, .back-plam {
         cursor: pointer;
         color: red;
+      }
+      .back-plam {
+        color: green;
       }
     }
   }
