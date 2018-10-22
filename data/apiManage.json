@@ -76,5 +76,11 @@
     },
     "delPageApi": {
         "dev": "./mock-data/delPage.json"
+    },
+    "tableDownloadListApi": {
+        "dev": "./mock-data/tableDownloadList.json"
+    },
+    "tableDownloadApi": {
+        "dev": "./mock-data/tableDownload.json"
     }
 }

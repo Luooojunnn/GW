@@ -12,7 +12,7 @@
             <img class="item-img" src="../../assets/apply.png" alt="apply">
             <p>项目申请</p>
         </div>
-        <div class="oper-col-item">
+        <div class="oper-col-item" @click="jumpTo('downLoad')">
             <img class="item-img" src="../../assets/download.png" alt="download">
             <p>表格下载</p>
         </div>

@@ -6,6 +6,7 @@ import Pages from '@/components/Pages'
 import allPages from '@/components/allPages'
 import YzmForm from '@/components/YzmForm'
 import VIPSearch from '@/components/VIPSearch'
+import DownLoad from '@/components/DownLoad'
 import NotFound from '@/components/NotFound'
 
 import middle from '@/managePlatform/middle'
@@ -46,6 +47,11 @@ const router = new Router({
           path: 'VIPSearch',
           name: '会员搜索',
           component: VIPSearch
+        },
+        {
+          path: 'downLoad',
+          name: '表格下载',
+          component: DownLoad
         }
       ]
     },
@@ -66,7 +72,8 @@ const router = new Router({
           component: pageList
         }
       ]
-    },
+    }
+    ,
     {
       path: '*',
       name: 'nopage',

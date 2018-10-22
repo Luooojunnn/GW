@@ -49,6 +49,7 @@ export default {
     this.getData("http://localhost:9000/navInfoApi");
     this.judge();
     this.isAdmin = +localStorage.getItem('isAdmin')
+    this.initBread()
   },
   methods: {
     showChild(v, k = -1) {
@@ -114,6 +115,9 @@ export default {
     },
     goIndex(v) {
       this.$router.push(v)
+    },
+    initBread() {
+      this.routerName = this.$route.name
     }
   },
   watch: {
@@ -122,7 +126,7 @@ export default {
     },
     // 面包屑的路由观察
     $route() {
-      console.log(this.$route)
+      // console.log(this.$route)
       this.routerName = this.$route.name
     }
   }

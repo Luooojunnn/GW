@@ -27,7 +27,6 @@ export default {
     },
   created() {
     this.getData()
-    console.log(this.$route)
   },
   components:{
   },

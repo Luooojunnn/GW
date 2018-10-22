@@ -64,6 +64,7 @@ export default {
           })
           .then(res => {
               if (+res.err.code === 200) {
+                this.nums = res.data.nums
                 this.pageList = res.data.pageList
             }
           })
