@@ -58,5 +58,14 @@
     "vipSearchApi": {
         "dev": "./mock-data/vipSearch.json",
         "online": "http://chstpa.bdpku.com/member/searchMember"  
+    },
+    "uploadPageApi": {
+        "dev": "./mock-data/uploadPage.json"
+    },
+    "pageSortApi": {
+        "dev": "./mock-data/pageSort.json"
+    },
+    "pageSourceApi": {
+        "dev": "./mock-data/pageSource.json"
     }
 }
