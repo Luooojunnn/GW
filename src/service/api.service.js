@@ -32,7 +32,7 @@ http.createServer((req, res) => {
         res.setHeader('Access-Control-Allow-Origin', '*')
         res.setHeader('Access-Control-Allow-Methods', 'OPTIONS,GET,POST,PUT,DELETE')
         res.setHeader('Access-Control-Allow-Headers', 'Origin,X-Requested-With,Content-Type,Accept,Authorization')
-        res.setHeader('content-type', 'application/json; charset=utf-8')
+        res.setHeader('content-type', 'application/json; charset=utf-8; image/png;')
 
         if (reqMethod === 'OPTIONS') {
           console.log(res.getHeaders())
@@ -63,6 +63,10 @@ http.createServer((req, res) => {
 
           let finalAddress = path.join(__dirname, '../../data/', apiAdress)
           // dev环境 - 读取接口，输出json
+          if (!apiAdress.includes('json')) {
+            res.end('请求非json接口，应是下载之类的...')
+            return
+          }
           let apiData = fs.readFileSync(finalAddress)
           res.end(apiData.toString('utf8'))
         } else {

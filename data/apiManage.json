@@ -81,6 +81,6 @@
         "dev": "./mock-data/tableDownloadList.json"
     },
     "tableDownloadApi": {
-        "dev": "./mock-data/tableDownload.json"
+        "dev": "./mock-data/tableDownload.png"
     }
 }

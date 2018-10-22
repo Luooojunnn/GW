@@ -2,7 +2,7 @@
   <div class="pages-wrap">
      <div class="all-pages">
          <div v-for="item in pagesData" class="title-item">
-             <a @click="tableDownload(item.id)"> <img :src="item.icon" class="pre-cion"> {{item.title}} <span class="time">{{item.date}}</span></a>
+             <a download='1' href="#"> <img :src="item.icon" class="pre-cion"> {{item.title}} <span class="time">{{item.date}}</span></a>
          </div>
      </div>
      <div class="pag">
@@ -16,7 +16,6 @@
   </div>  
 </template>
 <script>
-import mix from '../../mixins/clickPage'
 export default {
     data() {
         return {
@@ -54,11 +53,22 @@ export default {
         this.initNum = +v - 1
         this.getData()
     },
-    tableDownload(id) {
-        console.log(id)
-    }
-  },
-  mixins: [mix]
+    // tableDownload(id) {
+    //     console.log(id)
+    //     this.http
+    //     .get('http://localhost:9000/tableDownloadApi', {
+    //         params: {
+    //             id: id
+    //         }
+    //     })
+    //     .then(res => {
+    //         console.log(res)
+    //     })
+    //     .catch(e => {
+    //         console.log(e)
+    //     })
+    // }
+  }
 }
 </script>
 <style lang="scss" scoped>
