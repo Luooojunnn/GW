@@ -25,6 +25,10 @@
                 </el-menu>
             </el-col>
             <el-col class="col-wrap" :span='16' :offset='2'>
+                <div class="main-oper">
+                    <el-button size='small' type='success'>回到官网</el-button>
+                    <el-button size='small' type='danger'>退出登录</el-button>
+                </div>
                 <router-view></router-view>
             </el-col>
         </el-row>
@@ -61,6 +65,9 @@ export default {
         height: 100%;
         .col-wrap {
             height: 100%;
+            .main-oper {
+                margin-top: 2em;
+            }
         }
     }
 }
