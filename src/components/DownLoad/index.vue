@@ -2,7 +2,7 @@
   <div class="pages-wrap">
      <div class="all-pages">
          <div v-for="item in pagesData" class="title-item">
-             <a download='1' href="#"> <img :src="item.icon" class="pre-cion"> {{item.title}} <span class="time">{{item.date}}</span></a>
+             <a :download='item.title' :href="item.downloadAdd"> <img :src="item.icon" class="pre-cion"> {{item.title}} <span class="time">{{item.date}}</span></a>
          </div>
      </div>
      <div class="pag">
@@ -75,7 +75,9 @@ export default {
 .pages-wrap {
     .all-pages {
         .title-item {
+            text-decoration: none;
             padding: 14px 0;
+            padding-right: 1em;
             .time {
                 float: right;
             }
@@ -85,7 +87,7 @@ export default {
                 cursor: pointer;
                 padding-left: 1em;
                 margin: 0;
-                padding-right: 1em;
+                text-decoration: none;
             }
             &:nth-child(2n+1) {
                 background-color: #b0bcdc;
