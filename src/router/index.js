@@ -10,6 +10,7 @@ import NotFound from '@/components/NotFound'
 
 import middle from '@/managePlatform/middle'
 import publishPage from '@/managePlatform/publishPage'
+import pageList from '@/managePlatform/pageList'
 
 Vue.use(Router)
 
@@ -58,6 +59,11 @@ const router = new Router({
           path: 'publishPage',
           name: '文章发布',
           component: publishPage
+        },
+        {
+          path: 'pageList',
+          name: '文章列表',
+          component: pageList
         }
       ]
     },

@@ -25,7 +25,7 @@
                 <!-- <ueditorOne ref="diseaseFileUeditor"></ueditorOne> -->
             </el-form-item>
             <el-form-item>
-                <el-button type="primary" @click="onSubmit">发布</el-button>
+                <el-button type="primary" @click="onSubmit" :disabled='!(this.form.name && this.form.type && this.form.person && this.form.introduction && this.form.source && this.form.editorContent)'>发布</el-button>
                 <el-button @click="resetForm('form')">重置</el-button>
             </el-form-item>
         </el-form>

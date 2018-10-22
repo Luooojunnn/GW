@@ -7,14 +7,18 @@
                 class="el-menu-vertical-demo"
                 >
                 <el-menu-item index="1" @click="jumpTo('publishPage')">
-                    <i class="el-icon-document"></i>
+                    <i class="el-icon-circle-plus-outline"></i>
                     <span slot="title">文章发布</span>
                 </el-menu-item>
-                <el-menu-item index="2" disabled>
+                <el-menu-item index="2" @click="jumpTo('pageList')">
+                    <i class="el-icon-document"></i>
+                    <span slot="title">文章列表</span>
+                </el-menu-item>
+                <el-menu-item index="3" disabled>
                     <i class="el-icon-menu"></i>
                     <span slot="title">会员审核</span>
                 </el-menu-item>
-                <el-menu-item index="3" disabled>
+                <el-menu-item index="4" disabled>
                     <i class="el-icon-setting"></i>
                     <span slot="title">更多</span>
                 </el-menu-item>

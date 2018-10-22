@@ -60,12 +60,21 @@
         "online": "http://chstpa.bdpku.com/member/searchMember"  
     },
     "uploadPageApi": {
-        "dev": "./mock-data/uploadPage.json"
+        "dev": "./mock-data/uploadPage.json",
+         "online": "http://chstpa.bdpku.com/article/saveArticle" 
     },
     "pageSortApi": {
-        "dev": "./mock-data/pageSort.json"
+        "dev": "./mock-data/pageSort.json",
+         "online": "http://chstpa.bdpku.com/article/getArticleCate" 
     },
     "pageSourceApi": {
-        "dev": "./mock-data/pageSource.json"
+        "dev": "./mock-data/pageSource.json",
+        "online": "http://chstpa.bdpku.com/article/getArticleResource"
+    },
+    "pageListApi": {
+        "dev": "./mock-data/pageList.json"
+    },
+    "delPageApi": {
+        "dev": "./mock-data/delPage.json"
     }
 }
