@@ -122,7 +122,7 @@ http.createServer((req, res) => {
     res.end('接口解析出现了一些错误...')
     throw new Error(e)
   }
-}).listen(9000, 'localhost', () => {
+}).listen(9000, () => {
   console.log('接口服务启动在localhost:9000')
 })
 
