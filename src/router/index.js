@@ -12,6 +12,7 @@ import NotFound from '@/components/NotFound'
 import middle from '@/managePlatform/middle'
 import publishPage from '@/managePlatform/publishPage'
 import pageList from '@/managePlatform/pageList'
+import uploadFile from '@/managePlatform/uploadFile'
 
 Vue.use(Router)
 
@@ -70,10 +71,14 @@ const router = new Router({
           path: 'pageList',
           name: '文章列表',
           component: pageList
+        },
+        {
+          path: 'uploadFile',
+          name: '上传文件',
+          component: uploadFile
         }
       ]
-    }
-    ,
+    },
     {
       path: '*',
       name: 'nopage',

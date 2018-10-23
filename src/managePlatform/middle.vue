@@ -14,11 +14,15 @@
                     <i class="el-icon-document"></i>
                     <span slot="title">文章列表</span>
                 </el-menu-item>
-                <el-menu-item index="3" disabled>
+                <el-menu-item index="3" @click="jumpTo('uploadFile')">
+                    <i class="el-icon-upload2"></i>
+                    <span slot="title">上传文档</span>
+                </el-menu-item>
+                <el-menu-item index="4" disabled>
                     <i class="el-icon-menu"></i>
                     <span slot="title">会员审核</span>
                 </el-menu-item>
-                <el-menu-item index="4" disabled>
+                <el-menu-item index="5" disabled>
                     <i class="el-icon-setting"></i>
                     <span slot="title">更多</span>
                 </el-menu-item>
