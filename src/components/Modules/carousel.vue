@@ -30,7 +30,6 @@ export default {
           .then(res => {
             if (+res.err.code === 200) {
               this.imgArr = res.data.carouselData
-              console.log(this.imgArr)
             } else {
               this.$message.error(res.err.desc);
             }

@@ -1,10 +1,15 @@
 <template>
   <div class="bottom-info">
-    <div class="wrap-item" v-for="item in infoData">
-        <h3>{{item.title}}</h3>
-        <ul>
-            <li v-for="i in item.detail">{{i.childTit}}</li>
-        </ul>
+    <div class="wrap-item">
+        <img src="../../assets/bottom.jpg" class="img-bot">
+        <p>地址：北京市朝阳区东三环北路甲2号京信大厦1334室</p>
+        <p>邮编：100027</p>
+        
+    </div>
+    <div class="wrap-item">
+        <p>电话：010-62057688</p>
+        <p>网址：<a href="http://www.chstpa.com">www.chstpa.com</a></p>
+        <p>邮箱：bangongshi@chstpa.com</p>
     </div>
   </div>  
 </template>
@@ -15,7 +20,7 @@
 export default {
     data() {
         return {
-            infoData: []
+            // infoData: [1,2,3]
         }
     },
   components:{
@@ -28,25 +33,27 @@ export default {
 </script>
 <style lang="scss" scoped>
     .bottom-info {
-         padding-top: 20px;
-        border: solid 1px red;
-        background-color: #f6f6f6;
+        padding-top: 20px;
+        border: solid 1px #f6f6f6;
+        background-color: #fff;
         display: flex;
         height: 198px;
         .wrap-item {
+            text-indent: 20%;
             flex: 1;
-            h3 {
-                text-align: center;
+            padding-top: 4em;
+            position: relative;
+            .img-bot {
+                width: 60px;
+                height: 60px;
+                position: absolute;
+                left: 2em;
             }
-            ul {
-                li {
-                    cursor: pointer;
-                    font-size: 14px;
-                    padding-bottom: 8px;
-                }
-                li:hover {
-                    text-decoration: underline;
-                }
+            p {
+                text-indent: 20%;
+                font-size: 13px;
+                color: rgb(102, 102, 102);
+                font-family: 微软雅黑;
             }
         }
     }

@@ -52,7 +52,9 @@ export default {
     },
     methods: {
       onSubmit() {
-        this.httpFc('http://localhost:9000/uploadPageApi').then(res => {
+        this.http
+        .post('http://localhost:9000/uploadPageApi',this.form)
+        .then(res => {
             console.log(res)
         })
       },
