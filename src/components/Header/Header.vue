@@ -15,7 +15,7 @@
             <ul class="nav-child">
                 <li v-for="(item, key) in navInfo" @mouseover="showChild(true, key)" @mouseout="showChild(false)">
                     <span>{{item.level1Name}}</span>
-                    <div class="extr-txt" v-if='item.child.length && !!showStatus[key]'>
+                    <div class="extr-txt" v-if='true'>
                         <span class="level2" v-for="i in item.child">{{i.level2Name}}</span>
                     </div>
                 </li>
@@ -33,8 +33,10 @@
   </div>  
 </template>
 <script>
+import mix from '../../mixins/clickPage'
 export default {
   props: ["name"],
+  mixins: [mix],
   data() {
     return {
       username: "",

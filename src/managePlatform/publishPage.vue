@@ -5,12 +5,12 @@
                 <el-input v-model="form.title"></el-input>
             </el-form-item>
             <el-form-item label="类别">
-                <el-select v-model="form.type" placeholder="请选择类别" prop='type'>
+                <el-select v-model="form.cateId" placeholder="请选择类别" prop='cateId'>
                     <el-option v-for="item in typeArr" :key='item.val' :label="item.desc" :value="item.val"></el-option>
                 </el-select>    
             </el-form-item>
-            <el-form-item label="来源" prop='source'>
-                <el-select v-model="form.source" placeholder="请选择来源">
+            <el-form-item label="来源" prop='resource'>
+                <el-select v-model="form.resource" placeholder="请选择来源">
                     <el-option v-for="item in sourceArr" :key='item.val' :label="item.desc" :value="item.val"></el-option>
                 </el-select>
             </el-form-item>
@@ -20,12 +20,12 @@
             <el-form-item label="简介" prop='summary'>
                 <el-input v-model="form.summary"></el-input>
             </el-form-item>
-            <el-form-item label="内容" prop='editorContent'>
+            <el-form-item label="内容" prop='content'>
                 <div id="editorElem"></div>
                 <!-- <ueditorOne ref="diseaseFileUeditor"></ueditorOne> -->
             </el-form-item>
             <el-form-item>
-                <el-button type="primary" @click="onSubmit" :disabled='!(this.form.title && this.form.type && this.form.editor && this.form.summary && this.form.source && this.form.editorContent)'>发布</el-button>
+                <el-button type="primary" @click="onSubmit" :disabled='!(this.form.title && this.form.cateId && this.form.editor && this.form.summary && this.form.resource && this.form.content)'>发布</el-button>
                 <el-button @click="resetForm('form')">重置</el-button>
             </el-form-item>
         </el-form>
@@ -34,17 +34,16 @@
 
 <script>
 import E from 'wangeditor'
-
 export default {
     data() {
       return {
         form: {
           title: '',
-          type: '',
+          cateId: '',
           editor: '',
           summary: '',
-          source: '',
-          editorContent: ''
+          resource: '',
+          content: ''
         },
         typeArr: [],
         sourceArr: []
@@ -72,7 +71,7 @@ export default {
         editor.customConfig.zIndex = 1
         editor.customConfig.onchange = (html) => {
           console.log(html)
-          this.form.editorContent = html
+          this.form.content = html
         }
         editor.create()
     },
@@ -99,5 +98,3 @@ export default {
     }
     
 </style>
-
-
