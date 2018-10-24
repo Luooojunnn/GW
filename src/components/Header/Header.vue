@@ -15,8 +15,8 @@
             <ul class="nav-child">
                 <li v-for="(item, key) in navInfo" @mouseover="showChild(true, key)" @mouseout="showChild(false)">
                     <span>{{item.level1Name}}</span>
-                    <div class="extr-txt" v-if='true'>
-                        <span class="level2" v-for="i in item.child">{{i.level2Name}}</span>
+                    <div class="extr-txt" v-if='item.child.length && !!showStatus[key]'>
+                        <span class="level2" v-for="i in item.child" @click="jumpFc(i.path, i.pageClass, i.pageId)">{{i.level2Name}}</span>
                     </div>
                 </li>
             </ul>
@@ -71,6 +71,7 @@ export default {
         .then(res => {
           if (+res.err.code === 200) {
             this.navInfo = res.data.navInfo;
+            console.log(this.navInfo)
             this.showStatus.length = this.navInfo.length;
             this.showStatus.fill(0);
           }
@@ -120,6 +121,11 @@ export default {
     },
     initBread() {
       this.routerName = this.$route.name
+    },
+    jumpFc(path, c, id) {
+      if (path === 'pages') {
+        this.$router.push({ path: 'pages', query: { c, id } })
+      }
     }
   },
   watch: {

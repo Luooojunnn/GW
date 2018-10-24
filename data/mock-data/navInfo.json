@@ -20,12 +20,18 @@
                     {
                         "level2Name": "医院咨询",
                         "opened": 0,
-                        "operId": 2.1
+                        "operId": 2.1,
+                        "path": "pages",
+                        "pageClass": 3,
+                        "pageId": 12
                     },
                     {
                         "level2Name": "医生咨询",
                         "opened": 1,
-                        "operId": 2.2
+                        "operId": 2.2,
+                        "path": "pages",
+                        "pageClass": 5,
+                        "pageId": 76
                     }
                 ],
                 "opened": 0
