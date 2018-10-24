@@ -123,8 +123,8 @@ export default {
       this.routerName = this.$route.name
     },
     jumpFc(path, c, id) {
-      if (path === 'pages') {
-        this.$router.push({ path: 'pages', query: { c, id } })
+      if (path === 'pages' || path === 'allPages') {
+        this.$router.push({ path, query: { c, id } })
       }
     }
   },

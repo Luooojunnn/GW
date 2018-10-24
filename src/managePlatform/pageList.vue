@@ -72,9 +72,7 @@ export default {
         delPage(id) {
             let _this = this
             this.http
-            .post('http://localhost:9000/delPageApi', {
-                "id": id
-            })
+            .get('http://localhost:9000/delPageApi?id=' + id)
             .then(res => {
                 if (+res.err.code === 200) {
                     this.getAllPages(_this.searchContent, 0)

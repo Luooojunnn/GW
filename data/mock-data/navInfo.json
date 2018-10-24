@@ -29,7 +29,7 @@
                         "level2Name": "医生咨询",
                         "opened": 1,
                         "operId": 2.2,
-                        "path": "pages",
+                        "path": "allPages",
                         "pageClass": 5,
                         "pageId": 76
                     }
