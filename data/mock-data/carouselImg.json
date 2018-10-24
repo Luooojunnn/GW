@@ -1,0 +1,27 @@
+{
+    "err": {
+        "code": 200,
+        "msg": "OK",
+        "desc": "请求成功"
+    },
+    "data": {
+        "carouselData": [
+            {
+                "id": 1,
+                "address": "http://p1.xiaoshidi.net/2018/08/31060613751498.jpg"
+            },
+            {
+                "id": 2,
+                "address": "http://p2.xiaoshidi.net/2018/08/31060613785322.jpg"
+            },
+            {
+                "id": 3,
+                "address": "http://p2.xiaoshidi.net/2018/08/31060613817254.jpg"
+            },
+            {
+                "id": 4,
+                "address": "http://p2.xiaoshidi.net/2018/08/31060613853582.jpg"
+            }
+        ]
+    }
+}

@@ -72,15 +72,21 @@
         "online": "http://chstpa.bdpku.com/article/getArticleResource"
     },
     "pageListApi": {
-        "dev": "./mock-data/pageList.json"
+        "dev": "./mock-data/pageList.json",
+        "online": "http://chstpa.bdpku.com/article/searchArticle"
     },
     "delPageApi": {
-        "dev": "./mock-data/delPage.json"
+        "dev": "./mock-data/delPage.json",
+        "online": "http://chstpa.bdpku.com/article/delArticle"
     },
     "tableDownloadListApi": {
-        "dev": "./mock-data/tableDownloadList.json"
+        "dev": "./mock-data/tableDownloadList.json",
+        "online": "http://chstpa.bdpku.com/upload/getDownload"
     },
     "tableDownloadApi": {
         "dev": "./mock-data/tableDownload.png"
+    },
+    "carouselImgApi": {
+        "dev": "./mock-data/carouselImg.json"
     }
 }
