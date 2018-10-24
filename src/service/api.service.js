@@ -35,7 +35,7 @@ http.createServer((req, res) => {
         res.setHeader('content-type', 'application/json; charset=utf-8; image/png;')
 
         if (reqMethod === 'OPTIONS') {
-          console.log(res.getHeaders())
+          // console.log(res.getHeaders())
           res.writeHead(200)
           res.end('')
           console.log(`接口名 ${url.parse(req.url, true).pathname}，采用 ${reqMethod} 请求方式`.underline)
