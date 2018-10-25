@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <div class="module-news">
      <div class="module-news-notice" @click="clickPage(category, id)">
          <h3>{{title}}</h3>
@@ -30,7 +30,7 @@ export default {
   methods: {
     getDate() {
       this.http
-        .get("http://localhost:9000/newsApi")
+        .get('http://chstpa.chstpa.com/article/getNews')
         .then(res => {
           if (+res.err.code === 200) {
             this.title = res.data.notice.title

@@ -1,4 +1,4 @@
-<template>
+﻿<template>
     <div class="page-list">
         <el-row class="row-search">
             <el-col :span='16'>
@@ -56,7 +56,7 @@ export default {
     methods: {
         getAllPages(v, num = 0) {
            this.http
-          .get('http://localhost:9000/pageListApi', {
+          .get('http://chstpa.bdpku.com/article/searchArticle', {
               params: {
                   name: String(v),
                   num: num
@@ -72,7 +72,7 @@ export default {
         delPage(id) {
             let _this = this
             this.http
-            .get('http://localhost:9000/delPageApi?id=' + id)
+            .get('http://chstpa.chstpa.com/article/delArticle')
             .then(res => {
                 if (+res.err.code === 200) {
                     this.getAllPages(_this.searchContent, 0)

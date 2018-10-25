@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <div class="vip-search-form">
     <div class="vip-search-form-wrap">
       <el-form class="vip-search-table" ref="form" :model="form" label-width="100px">
@@ -36,7 +36,7 @@ export default {
     submitFc() {
       this.form.personNum && this.http
         .get(
-          "http://localhost:9000/vipSearchApi",
+          "http://chstpa.chstpa.com/member/searchMember",
           {
             params: {
               name: this.form.personNum

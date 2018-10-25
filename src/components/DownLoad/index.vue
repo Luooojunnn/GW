@@ -32,7 +32,7 @@ export default {
   methods: {
     getData() {
       this.http
-      .get('http://localhost:9000/tableDownloadListApi', {
+      .get('http://chstpa.chstpa.com/upload/getDownload', {
           params: {
               num: this.initNum
           }

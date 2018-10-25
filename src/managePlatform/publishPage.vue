@@ -1,4 +1,4 @@
-<template>
+﻿<template>
     <div class="publish-wrap">
         <el-form ref="form" :model="form" label-width="80px">
             <el-form-item label="标题" prop='title'>
@@ -52,7 +52,7 @@ export default {
     methods: {
       onSubmit() {
         this.http
-        .post('http://localhost:9000/uploadPageApi',this.form)
+        .post('http://chstpa.chstpa.com/article/saveArticle')
         .then(res => {
             console.log(res)
         })
@@ -76,12 +76,12 @@ export default {
         editor.create()
     },
     created() {
-        this.httpFc('http://localhost:9000/pageSortApi').then(res => {
+        this.httpFc('http://chstpa.chstpa.com/article/getArticleCate').then(res => {
             if (+res.err.code === 200) {
                 this.typeArr = res.data.data
             }
         })
-        this.httpFc('http://localhost:9000/pageSourceApi').then(res => {
+        this.httpFc('http://chstpa.chstpa.com/article/getArticleResource').then(res => {
             if (+res.err.code === 200) {
                 this.sourceArr = res.data.data
             }

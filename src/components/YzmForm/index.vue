@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <div class="yzm-form">
     <div class="yzm-form-wrap">
       <el-form class="yzm-table" ref="form" :rules="rules" :model="form" label-width="100px">
@@ -55,7 +55,7 @@ export default {
       this.$router.go(-1);
     },
     updataYZM() {
-      this.http.get("http://localhost:9000/yzmApi", {
+      this.http.get("http://chstpa.chstpa.com/verify/getVerifyCode", {
         params: {
           rnd: Math.random()
         }
@@ -74,7 +74,7 @@ export default {
     setPhoneCode() {
       this.timing = true
       this.http
-      .post('http://localhost:9000/setPhoneCodeApi', {
+      .post('http://chstpa.chstpa.com/verify/getPhoneCode', {
         phone: this.form.phone
       })
       .then(res => {
@@ -99,7 +99,7 @@ export default {
       this.$refs["form"].validate(valid => {
         if (valid) {
           this.http
-          .post('http://localhost:9000/foundPasswordApi', 
+          .post('http://chstpa.chstpa.com/common/foundPassword', 
           Object.assign({}, this.form, {'ctoken': this.ctoken})
           )
           .then(res => {

@@ -33,7 +33,7 @@ export default {
   methods: {
     getData() {
       this.http
-      .get('http://localhost:9000/allPagesApi', {
+      .get('http://http://chstpa.chstpa.com/article/getArticle', {
           params: {
               c: this.$route.query.c,
               id: this.$route.query.id,

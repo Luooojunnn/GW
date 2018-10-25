@@ -18,7 +18,7 @@ export default {
   },
   components: {},
   created() {
-    // this.getDate()
+    this.getDate()
   },
   methods: {
       aa() {
@@ -26,7 +26,7 @@ export default {
       },
       getDate() {
         this.http
-          .get("http://localhost:9000/carouselImgApi")
+          .get("http://http://chstpa.chstpa.com/mock-data/carouselImg.json")
           .then(res => {
             if (+res.err.code === 200) {
               this.imgArr = res.data.carouselData

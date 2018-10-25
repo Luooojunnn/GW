@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <div id='header' :style="{'border-bottom': (this.$route.path === '/index' || this.$route.path === '/YzmForm') ? 'inhert' : 'inhert'}">
     <div class="title">
         <img class="logo" src="../../assets/logo.jpg" alt="LOGO" title="主页" @click="goIndex('/')">
@@ -48,7 +48,7 @@ export default {
     };
   },
   created() {
-    this.getData("http://localhost:9000/navInfoApi");
+    this.getData("http://chstpa.chstpa.com/navInfo/navList");
     this.judge();
     this.isAdmin = +localStorage.getItem('isAdmin')
     this.initBread()
@@ -98,7 +98,7 @@ export default {
     },
     exitFc() {
       this.http
-        .post("http://localhost:9000/exitLoginApi", {
+        .post("http://chstpa.chstpa.com/logout", {
           token: localStorage.getItem("TOKEN")
         })
         .then(res => {

@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <div class="pages-wrap">
       <el-button class="back" icon="el-icon-back" circle @click="goBack"></el-button>
       <h2 class="tit">{{article.title}}</h2>
@@ -25,7 +25,7 @@ export default {
   methods: {
     getData() {
       this.http
-      .get('http://localhost:9000/specificPagesApi', {
+      .get('http://chstpa.chstpa.com/article/getArticle', {
           params: {
               c: this.$route.query.c,
               id: this.$route.query.id

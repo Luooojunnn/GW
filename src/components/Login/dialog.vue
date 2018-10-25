@@ -1,4 +1,4 @@
-<!--
+﻿<!--
 import { clearInterval } from 'timers';
 import { setInterval } from 'timers';
 import { setTimeout } from 'timers';
@@ -92,7 +92,7 @@ export default {
       this.$router.push("YzmForm");
     },
     updataYZM() {
-      this.http.get("http://localhost:9000/yzmApi", {
+      this.http.get("http://chstpa.chstpa.com/verify/getVerifyCode", {
         params: {
           rnd: Math.random()
         }
@@ -114,8 +114,8 @@ export default {
           console.log(this.showStatus.whitchOper);
           // 0 注册， 1 登录
           let url = this.showStatus.whitchOper
-            ? "http://localhost:9000/loginApi"
-            : "http://localhost:9000/registeredApi"
+            ? "http://chstpa.chstpa.com/login"
+            : "http://chstpa.chstpa.com/registered"
 
           let params = this.showStatus.whitchOper
             ? {
@@ -158,7 +158,7 @@ export default {
     setPhoneCode() {
       this.timing = true
       this.http
-      .post('http://localhost:9000/setPhoneCodeApi', {
+      .post('http://chstpa.chstpa.com/verify/getPhoneCode', {
         phone: this.form.phone
       })
       .then(res => {
