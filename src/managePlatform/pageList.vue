@@ -72,7 +72,11 @@ export default {
         delPage(id) {
             let _this = this
             this.http
-            .get('http://chstpa.chstpa.com/article/delArticle')
+            .get('http://chstpa.chstpa.com/article/delArticle', {
+                params: {
+                    id
+                }
+            })
             .then(res => {
                 if (+res.err.code === 200) {
                     this.getAllPages(_this.searchContent, 0)
