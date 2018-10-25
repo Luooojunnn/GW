@@ -198,7 +198,7 @@ export default {
             margin-top: 1px;
             .level2 {
               display: block;
-              background-color: #ccc;
+              background-color: #09abbf;
               border-bottom: solid 1px #fff;
               color: #fff;
               padding: 0 6px;
@@ -206,7 +206,7 @@ export default {
           }
         }
         li:hover {
-          background-color: #ccc;
+          background-color: #09abbf;
           border-bottom: solid 1px #fff;
           // color: #09abbf;
         }
