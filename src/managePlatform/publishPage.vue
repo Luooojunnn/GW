@@ -52,7 +52,7 @@ export default {
     methods: {
       onSubmit() {
         this.http
-        .post('http://chstpa.chstpa.com/article/saveArticle')
+        .post('http://chstpa.chstpa.com/article/saveArticle', this.form)
         .then(res => {
             console.log(res)
         })
