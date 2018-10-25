@@ -18,7 +18,7 @@ export default {
   },
   components: {},
   created() {
-    this.getDate()
+    // this.getDate()
   },
   methods: {
       aa() {

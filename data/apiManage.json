@@ -84,7 +84,7 @@
         "online": "http://chstpa.bdpku.com/upload/getDownload"
     },
     "tableDownloadApi": {
-        "dev": "./mock-data/tableDownload.png"
+        "dev": ""
     },
     "carouselImgApi": {
         "dev": "./mock-data/carouselImg.json"
