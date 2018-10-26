@@ -61,8 +61,8 @@ export default {
 }
 
 .wrap-news {
-  padding: 0 5%;
-
+  padding: 1% 5%;
+  // box-shadow: 2px 2px 2px red;
   .wrap-news-col {
     display: flex;
     justify-content: space-between;

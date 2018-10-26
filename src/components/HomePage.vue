@@ -43,7 +43,7 @@ export default {
 
 <style lang="scss" scoped type="text/css">
 .all-content-wrap {
-  padding: 0 80px;
+  padding: 0 10%;
   font-size: 14px;
   .view-model {
     padding: 10px;

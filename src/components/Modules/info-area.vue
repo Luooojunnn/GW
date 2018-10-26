@@ -65,6 +65,7 @@ export default {
     background-color: #eaeaea;
     border-radius: 4px;
     width: 48%;
+    box-shadow: 2px 2px 2px #ccc;
     h3 {
       text-align: center;
       margin-bottom: 0;
