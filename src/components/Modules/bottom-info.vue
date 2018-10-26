@@ -34,7 +34,7 @@ export default {
 <style lang="scss" scoped>
     .bottom-info {
         padding-top: 20px;
-        border: solid 1px #f6f6f6;
+        border: solid 4px #f6f6f6;
         background-color: #fff;
         display: flex;
         height: 198px;
