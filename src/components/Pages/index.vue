@@ -23,9 +23,9 @@ export default {
   components:{
   },
   methods: {
-    getData() {  //http://chstpa.chstpa.com/article/getArticle
+    getData() {
       this.http
-      .get('http://localhost:9000/specificPagesApi', {
+      .get('http://chstpa.chstpa.com/article/getArticle', {
           params: {
               c: this.$route.query.c,
               id: this.$route.query.id
