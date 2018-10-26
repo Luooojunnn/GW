@@ -38,8 +38,8 @@ export default {
         background-color: #fff;
         display: flex;
         height: 198px;
-        border-left: solid 1px #70cad6;
-        border-right: solid 1px #70cad6;
+        border-left: solid 1px #f6f6f6;
+        border-right: solid 1px #f6f6f6;
         .wrap-item {
             text-indent: 20%;
             flex: 1;

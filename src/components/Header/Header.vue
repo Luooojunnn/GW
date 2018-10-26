@@ -145,8 +145,8 @@ export default {
   padding: 20px 10px 10px;
   background-color: #fff;
   border-bottom: solid 1px rgba(166, 166, 166, 0.3);
-  border-left: solid 1px #70cad6;
-  border-right: solid 1px #70cad6;
+  border-left: solid 1px #f6f6f6;
+  border-right: solid 1px #f6f6f6;
   .title {
     display: flex;
     justify-content: space-between;

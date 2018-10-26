@@ -29,7 +29,7 @@ export default {
         this.getData('http://chstpa.chstpa.com/article/getArticle?c=5&id=0')
         break
       case 'library':
-        this.tit = '医用组织库'
+        this.tit = '扶贫共建'
         this.getData('http://chstpa.chstpa.com/article/getArticle?c=6&id=0')
         break
       case 'learningData':
@@ -62,10 +62,10 @@ export default {
 <style lang="scss" scoped>
   .info-area {
     display: inline-block;
-    background-color: #eaeaea;
+    background-color: #fff;
     border-radius: 4px;
     width: 48%;
-    box-shadow: 2px 2px 2px #ccc;
+    box-shadow: 0px 0px 2px #ccc;
     h3 {
       text-align: center;
       margin-bottom: 0;
