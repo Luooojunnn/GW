@@ -6,7 +6,27 @@ import { setInterval } from 'timers';
 <template>
   <div class="carousel-about-wrap" @mouseover="stopAni(1)" @mouseout="stopAni(0)">
      <div class="carousel-about-parent" :style="{'left': '-'+changeNum + 'px'}">
-         <div class="carousel-about-item" v-for="item in 3" @click="clickItem(item)">{{item}}</div>
+         <div class="carousel-about-item">
+             <img class="c-img" src="../../assets/1.jpg" />
+         </div>
+         <div class="carousel-about-item">
+             <img class="c-img" src="../../assets/2.jpg" />
+         </div>
+         <div class="carousel-about-item">
+             <img class="c-img" src="../../assets/3.jpg" />
+         </div>
+         <div class="carousel-about-item">
+             <img class="c-img" src="../../assets/4.jpg" />
+         </div>
+         <div class="carousel-about-item">
+             <img class="c-img" src="../../assets/5.jpg" />
+         </div>
+         <div class="carousel-about-item">
+             <img class="c-img" src="../../assets/6.jpg" />
+         </div>
+         <div class="carousel-about-item">
+             <img class="c-img" src="../../assets/7.jpg" />
+         </div>
      </div>
   </div>  
 </template>
@@ -15,7 +35,8 @@ export default {
     data() {
         return {
             changeNum: 0,
-            ani: ''
+            ani: '',
+            // imgArr: ['../../assets/1.jpg', '../../assets/2.jpg', '../../assets/3.jpg', '../../assets/4.jpg', '../../assets/5.jpg', '../../assets/6.jpg', '../../assets/7.jpg']
         }
     },
   components: {},
@@ -59,6 +80,10 @@ export default {
       height: 100%;
       margin-left: 20px;
       background: gray;
+      .c-img {
+          width: 100%;
+          height: 100%;
+      }
     }
   }
 }
