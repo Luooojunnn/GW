@@ -7,7 +7,7 @@
         <span>来源：{{article.fromWhere}}</span>
         <span>作者：{{article.person}}</span>
       </div>
-      <div v-html='article.article'></div>
+      <div class="main-content" v-html='article.article'></div>
   </div>  
 </template>
 <script>
@@ -23,9 +23,9 @@ export default {
   components:{
   },
   methods: {
-    getData() {
+    getData() {  //http://chstpa.chstpa.com/article/getArticle
       this.http
-      .get('http://chstpa.chstpa.com/article/getArticle', {
+      .get('http://localhost:9000/specificPagesApi', {
           params: {
               c: this.$route.query.c,
               id: this.$route.query.id
@@ -66,6 +66,9 @@ export default {
     }
     .back {
       margin-bottom: 20px;
+    }
+    .main-content {
+      padding: 0 8em;
     }
   }
 </style>
