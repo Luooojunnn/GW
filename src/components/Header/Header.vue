@@ -143,8 +143,10 @@ export default {
 <style lang="scss" scoped type="text/css">
 #header {
   padding: 20px 10px 10px;
-  background-color: #f6f6f6;
+  background-color: #fff;
   border-bottom: solid 1px rgba(166, 166, 166, 0.3);
+  border-left: solid 1px #70cad6;
+  border-right: solid 1px #70cad6;
   .title {
     display: flex;
     justify-content: space-between;

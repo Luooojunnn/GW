@@ -47,7 +47,9 @@ export default {
   font-size: 14px;
   .view-model {
     padding: 10px;
-    background-color: #f6f6f6;
+    background-color: #fff;
+    border-left: solid 1px #70cad6;
+    border-right: solid 1px #70cad6;
   }
 }
 </style>
