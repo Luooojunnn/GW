@@ -43,7 +43,7 @@ export default {
 <style lang="scss" scoped>
 .carousel-about-wrap {
   height: 120px;
-  border: solid 1px red;
+  border: solid 1px #fff;
   // display: flex;
   // white-space: nowrap;
   overflow: hidden;

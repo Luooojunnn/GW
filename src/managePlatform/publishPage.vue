@@ -54,7 +54,11 @@ export default {
         this.http
         .post('http://chstpa.chstpa.com/article/saveArticle', this.form)
         .then(res => {
-            console.log(res)
+            if (+res.err.code === 200) {
+                this.$router.push('pageList')
+            } else {
+                this.$message.error(res.err.desc);
+            }
         })
       },
       resetForm(formName) {
