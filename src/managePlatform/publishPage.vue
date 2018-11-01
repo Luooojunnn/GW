@@ -21,7 +21,7 @@
                 <el-input v-model="form.summary"></el-input>
             </el-form-item>
             <el-form-item label="内容" prop='content'>
-                <div id="editorElem" ref='editorElem'></div>
+                <div id="editorElem"></div>
                 <!-- <ueditorOne ref="diseaseFileUeditor"></ueditorOne> -->
             </el-form-item>
             <el-form-item>
@@ -91,6 +91,10 @@ export default {
                         var editor = new E('#editorElem')
                         editor.customConfig.uploadImgShowBase64 = true
                         editor.customConfig.zIndex = 1
+                        editor.customConfig.onchange = (html) => {
+                        console.log(html)
+                        this.form.content = html
+                        }
                         editor.create()
                         editor.txt.html(res.data.article)
                     } else {
