@@ -54,7 +54,7 @@ export default {
     console.log("to", to);
     console.log("from", from);
     console.log("next", next);
-    if (+localStorage.getItem("isAdmin") === 1) {
+    if (+localStorage.getItem("isAdmin") !== 1) {
       next();
       return;
     }

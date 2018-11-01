@@ -28,6 +28,7 @@
             label="操作">
             <template slot-scope="scope">
                 <el-button @click="delPage(scope.row.pageId)" type="text" size="small">删除</el-button>
+                <el-button @click="edit(scope.row.pageId)" type="text" size="small">编辑</el-button>
             </template>
             </el-table-column>
         </el-table>
@@ -89,6 +90,10 @@ export default {
         changePage(v) {
             let _this = this
             this.getAllPages(_this.searchContent, (+v-1))
+        },
+        edit(id) {
+            console.log(id)
+            this.$router.push({ path: 'publishPage', query: { c: 2, id: 6 }});
         }
     }
 }

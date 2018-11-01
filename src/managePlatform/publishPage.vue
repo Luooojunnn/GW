@@ -21,7 +21,7 @@
                 <el-input v-model="form.summary"></el-input>
             </el-form-item>
             <el-form-item label="内容" prop='content'>
-                <div id="editorElem"></div>
+                <div id="editorElem" ref='editorElem'></div>
                 <!-- <ueditorOne ref="diseaseFileUeditor"></ueditorOne> -->
             </el-form-item>
             <el-form-item>
@@ -46,7 +46,8 @@ export default {
           content: ''
         },
         typeArr: [],
-        sourceArr: []
+        sourceArr: [],
+        // resContent: ''
       }
     },
     methods: {
@@ -67,17 +68,54 @@ export default {
       httpFc(v) {
           return this.http
           .get(v)
+      },
+      /**
+       * 判断路由有没有参数，有则是编辑跳转过来，没有则是新增发布文章
+      */
+      routerDetection() {
+          let r = this.$route
+          if (r.query.c && r.query.id) {
+              this.http
+                .get('http://chstpa.chstpa.com/article/getArticle', {
+                    params: {
+                        c: r.query.c,
+                        id: r.query.id
+                    }
+                })
+                .then(res => {
+                    if (+res.err.code === 200) {
+                        this.form.title = res.data.title;
+                        this.form.editor = res.data.person;
+                        this.form.resource = res.data.fromWhere;
+
+                        var editor = new E('#editorElem')
+                        editor.customConfig.uploadImgShowBase64 = true
+                        editor.customConfig.zIndex = 1
+                        editor.create()
+                        editor.txt.html(res.data.article)
+                    } else {
+                        this.$message.error(res.err.desc);
+                    }
+                })
+                .catch(e => {
+                    console.log(e)
+                })
+          }
       }
     },
     mounted() {
-        var editor = new E('#editorElem')
-        editor.customConfig.uploadImgShowBase64 = true
-        editor.customConfig.zIndex = 1
-        editor.customConfig.onchange = (html) => {
-          console.log(html)
-          this.form.content = html
+        if (this.$route.query.c) {
+            this.routerDetection()
+        } else {
+            var editor = new E('#editorElem')
+            editor.customConfig.uploadImgShowBase64 = true
+            editor.customConfig.zIndex = 1
+            editor.customConfig.onchange = (html) => {
+            console.log(html)
+            this.form.content = html
+            }
+            editor.create()
         }
-        editor.create()
     },
     created() {
         this.httpFc('http://chstpa.chstpa.com/article/getArticleCate').then(res => {
