@@ -1,6 +1,9 @@
-﻿<template>
+<template>
     <div class="publish-wrap">
         <el-form ref="form" :model="form" label-width="80px">
+           <el-form-item label="id" prop='ids' style="display:none;">
+                <el-input v-model="form.ids"></el-input>
+            </el-form-item>
             <el-form-item label="标题" prop='title'>
                 <el-input v-model="form.title"></el-input>
             </el-form-item>
@@ -38,6 +41,7 @@ export default {
     data() {
       return {
         form: {
+            ids: '',
           title: '',
           cateId: '',
           editor: '',
@@ -74,19 +78,21 @@ export default {
       */
       routerDetection() {
           let r = this.$route
-          if (r.query.c && r.query.id) {
+          if (r.query.id) {
               this.http
                 .get('http://chstpa.chstpa.com/article/getArticle', {
                     params: {
-                        c: r.query.c,
                         id: r.query.id
                     }
                 })
                 .then(res => {
                     if (+res.err.code === 200) {
+                        this.form.ids = res.data.id;
                         this.form.title = res.data.title;
                         this.form.editor = res.data.person;
-                        this.form.resource = res.data.fromWhere;
+                        this.form.resource = res.data.resourceId;
+                        this.form.summary = res.data.summary;
+                        this.form.cateId = res.data.cateId;
 
                         var editor = new E('#editorElem')
                         editor.customConfig.uploadImgShowBase64 = true
@@ -108,7 +114,7 @@ export default {
       }
     },
     mounted() {
-        if (this.$route.query.c) {
+        if (this.$route.query.id) {
             this.routerDetection()
         } else {
             var editor = new E('#editorElem')

@@ -1,4 +1,4 @@
-﻿<template>
+<template>
     <div class="page-list">
         <el-row class="row-search">
             <el-col :span='16'>
@@ -93,7 +93,7 @@ export default {
         },
         edit(id) {
             console.log(id)
-            this.$router.push({ path: 'publishPage', query: { c: 2, id: 6 }});
+            this.$router.push({ path: 'publishPage', query: {id: id }});
         }
     }
 }

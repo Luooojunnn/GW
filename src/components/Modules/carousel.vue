@@ -1,6 +1,6 @@
 <template>
   <div class="module-carousel">
-    <el-carousel class='lbt' :interval="40000" height="430px" indicator-position="outside">
+    <el-carousel class='lbt' :interval="4000" height="430px" indicator-position="outside">
         <el-carousel-item v-for="item in imgArr" :key="item.id">
           <img :src="item.address" class="carousel-img">
         </el-carousel-item>
